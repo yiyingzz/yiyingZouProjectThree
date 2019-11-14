@@ -100,8 +100,7 @@ $('.gameContainer').on('click', '.clickEnabled', function() {
     const classNames = $(this).attr('class');
 
     // grab the right class name using regex
-    const boxChecker = /[0-9]/;
-    const boxNumber = boxChecker.exec(classNames);
+    boxNumber = classNames.match(/[0-9]/);
     simonGame.userSequence.push(parseInt(boxNumber[0]));
 
     $(this).css('background', `${simonGame.squares[boxNumber[0]].color}`);
@@ -110,7 +109,6 @@ $('.gameContainer').on('click', '.clickEnabled', function() {
         console.log($(this));
     }, 300);
     
-
     simonGame.userClicks++;
     if (simonGame.userClicks >= simonGame.sequenceLength ) {
         simonGame.compareSequences();
@@ -120,7 +118,6 @@ $('.gameContainer').on('click', '.clickEnabled', function() {
 simonGame.chances = 0;
     
 // compare user array to sequence array
-// first, compare array lengths - if they don't match - lose
 simonGame.compareSequences = function() {
 
     // logging the two arrays
