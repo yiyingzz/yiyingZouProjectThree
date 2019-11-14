@@ -124,16 +124,36 @@ simonGame.playSequence = function() {
         };
     })
 
+    simonGame.chances = 0;
     
     // compare user array to sequence array
     // first, compare array lengths - if they don't match - lose
     simonGame.compareSequences = function() {
         console.log("sequence:", simonGame.sequence);
         console.log("user sequence: ", simonGame.userSequence);
+
+        simonGame.chances++;
+        console.log(simonGame.chances);
+        
         for (let i = 0; i < simonGame.userSequence.length; i++) {
             if (simonGame.userSequence[i] === simonGame.sequence[i]) {
                 console.log(simonGame.userSequence[i], simonGame.sequence[i]);
+            } else if (simonGame.chances === 1) {
+                // second chance
+                $('.message').text("That was the wrong sequence. You get one more chance. Watch carefully!");
+                // reset user clicks & sequence
+                simonGame.userClicks = 0;
+                simonGame.userSequence = [];
+                // toggle off box clicking
+                $('.box').toggleClass('click-enabled');
+                
+                // give user a slight delay
+                setTimeout(function() {
+                    simonGame.playSequence();
+                }, 1500);
+                return false;
             } else {
+                // GAME OVER
                 $('.message').text("That was the wrong sequence. Game over!");
                 simonGame.resetGame();
                 simonGame.sequenceLength = 3;
@@ -157,6 +177,7 @@ simonGame.playSequence = function() {
         simonGame.sequence = [];
         simonGame.userSequence = []; 
         simonGame.userClicks = 0;
+        simonGame.chances = 0;
     }
 
 });
