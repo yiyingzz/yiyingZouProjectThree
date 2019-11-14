@@ -5,74 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simon Says</title>
-    <style>
-
-        html {
-            font-size: 62.5%;
-        }
-
-        body {
-            font-size: 2.5rem;
-            padding: 0;
-            margin: 0;
-            height: 100vh;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        button {
-            padding: 20px 30px;
-            font-size: inherit;
-        }
-
-        .game-container {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .box {
-            /* flex-basis: 25%; */
-            width: 150px;
-            height: 150px;
-            margin: 10px;
-            background: black;
-            /* transition: 0.3s all; */
-        }
-
-        /* .box:active {
-            background: black;
-        } */
-
-        .toggleDisplay {
-            display: none;
-        }
-    
-    </style>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
-    <h1>Simon Says</h1>
+    <div class="wrapper">
+        <header>
+            <h1>Simon Says</h1>
+        </header>
 
-    <div class="message">Let's play Simon Says!</div>
-    <div class="result"></div>
-
-    <div class="game-container">
-        <div class="box box0"></div>
-        <div class="box box1"></div>
-        <div class="box box2"></div>
-        <div class="box box3"></div>
-        <div class="box box4"></div>
-        <div class="box box5"></div>
-        <div class="box box6"></div>
-        <div class="box box7"></div>
-    </div>
+        <main>
+            <div class="message">(Instructions here)</div>
+            <div class="result"></div>
     
-    <div class="high-score"></div>
+            <div class="gameContainer">
+                <div class="box box0"></div>
+                <div class="box box1"></div>
+                <div class="box box2"></div>
+                <div class="box box3"></div>
+                <div class="box box4"></div>
+                <div class="box box5"></div>
+                <div class="box box6"></div>
+                <div class="box box7"></div>
+            </div>
+            
+            <div class="highScore"></div>
+            <button>Start</button>
+        </main>
+        
 
-    <button class="start">Start</button>
-    <button class="playAgain toggleDisplay">Play Again?</button>
+    
+    </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./scripts/script.js"></script>

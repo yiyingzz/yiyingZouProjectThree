@@ -1,54 +1,47 @@
-$(function() {
-
-
-
-// COLOUR PICK IN PHOTOSHOP - GET A BETTER SET OF RAINBOW COLOURS!!!!! (violet is also too dark)
-
 const simonGame = {};
 
 // streak counter (how long was your longest correct sequence)
 simonGame.highScore = 0;
 
-    simonGame.squares = [
-        {
-            box: ".box0",
-            color: "magenta"    
-        },
-        {
-            box: ".box1",
-            color: "red"
-        },
-        {
-            box: ".box2",
-            color: "orange"
-        },
-        {
-            box: ".box3",
-            color: "yellow"
-        },
-        {
-            box: ".box4",
-            color: "green"
-        },
-        {
-            box: ".box5",
-            color: "blue"
-        },
-        {
-            box: ".box6",
-            color: "indigo"
-        },
-        {
-            box: ".box7",
-            color: "rebeccapurple"
-        }
-    ];
+simonGame.squares = [
+    {
+        box: ".box0",
+        color: "#ff00ff"    
+    },
+    {
+        box: ".box1",
+        color: "#ff0000"
+    },
+    {
+        box: ".box2",
+        color: "#ff6600"
+    },
+    {
+        box: ".box3",
+        color: "#ffee00"
+    },
+    {
+        box: ".box4",
+        color: "#00ff00"
+    },
+    {
+        box: ".box5",
+        color: "#0099ff"
+    },
+    {
+        box: ".box6",
+        color: "#4400ff"
+    },
+    {
+        box: ".box7",
+        color: "#9900ff"
+    }
+];
 
 
-    
 // click 'start' button
 
-$('.start').on('click', function() {
+$('button').on('click', function() {
     console.log(" >>> you clicked the start button!");
 
     $('.message').text("Watch the sequence carefully!");
@@ -95,97 +88,101 @@ simonGame.playSequence = function() {
     
     setTimeout(function() {
         $('.message').text("Now it's your turn!");
-        $('.box').toggleClass('click-enabled');
+        $('.box').toggleClass('clickEnabled');
     }, 1600 * simonGame.sequence.length);
 }
 
-    simonGame.userSequence = [];
-    simonGame.userClicks = 0;
+simonGame.userSequence = [];
+simonGame.userClicks = 0;
 
-    // function to grab clicks and put on userSequence array
-    $('.game-container').on('click', '.click-enabled', function() {
-        const classNames = $(this).attr('class');
+// function to grab clicks and put on userSequence array
+$('.gameContainer').on('click', '.clickEnabled', function() {
+    const classNames = $(this).attr('class');
 
-        // grab the right class name using regex
-        const boxChecker = /[0-9]/;
-        const boxNumber = boxChecker.exec(classNames);
-        simonGame.userSequence.push(parseInt(boxNumber[0]));
+    // grab the right class name using regex
+    const boxChecker = /[0-9]/;
+    const boxNumber = boxChecker.exec(classNames);
+    simonGame.userSequence.push(parseInt(boxNumber[0]));
 
-        $(this).css('background', `${simonGame.squares[boxNumber[0]].color}`);
-        setTimeout(() => {
-            $(this).css('background', 'black');
-            console.log($(this));
-        }, 300);
-        
-
-        simonGame.userClicks++;
-        if (simonGame.userClicks >= simonGame.sequenceLength ) {
-            simonGame.compareSequences();
-        };
-    })
-
-    simonGame.chances = 0;
+    $(this).css('background', `${simonGame.squares[boxNumber[0]].color}`);
+    setTimeout(() => {
+        $(this).css('background', 'black');
+        console.log($(this));
+    }, 300);
     
-    // compare user array to sequence array
-    // first, compare array lengths - if they don't match - lose
-    simonGame.compareSequences = function() {
-        console.log("sequence:", simonGame.sequence);
-        console.log("user sequence: ", simonGame.userSequence);
 
-        simonGame.chances++;
-        console.log(simonGame.chances);
-        
-        for (let i = 0; i < simonGame.userSequence.length; i++) {
-            if (simonGame.userSequence[i] === simonGame.sequence[i]) {
-                console.log(simonGame.userSequence[i], simonGame.sequence[i]);
-            } else if (simonGame.chances === 1) {
-                // second chance
-                $('.message').text("That was the wrong sequence. You get one more chance. Watch carefully!");
-                // reset user clicks & sequence
-                simonGame.userClicks = 0;
-                simonGame.userSequence = [];
-                // toggle off box clicking
-                $('.box').toggleClass('click-enabled');
-                
-                // give user a slight delay
-                setTimeout(function() {
-                    simonGame.playSequence();
-                }, 1500);
-                return false;
-            } else {
-                // GAME OVER
-                $('.message').text("That was the wrong sequence. Game over!");
-                simonGame.resetGame();
-                simonGame.sequenceLength = 3;
-                $('.start').text('Play again?').toggleClass('toggleDisplay');
-                return false;
-            }
+    simonGame.userClicks++;
+    if (simonGame.userClicks >= simonGame.sequenceLength ) {
+        simonGame.compareSequences();
+    };
+})
+
+simonGame.chances = 0;
+    
+// compare user array to sequence array
+// first, compare array lengths - if they don't match - lose
+simonGame.compareSequences = function() {
+
+    // logging the two arrays
+    console.log("sequence:", simonGame.sequence);
+    console.log("user sequence: ", simonGame.userSequence);
+
+    simonGame.chances++;
+    console.log(simonGame.chances);
+    
+    for (let i = 0; i < simonGame.userSequence.length; i++) {
+        if (simonGame.userSequence[i] === simonGame.sequence[i]) {
+            console.log(simonGame.userSequence[i], simonGame.sequence[i]);
+        } else if (simonGame.chances === 1) {
+            // second chance
+            $('.message').text("That was the wrong sequence. You get one more chance. Watch carefully!");
+            // reset user clicks & sequence
+            simonGame.userClicks = 0;
+            simonGame.userSequence = [];
+            // toggle off box clicking
+            $('.box').toggleClass('clickEnabled');
+            
+            // give user a slight delay
+            setTimeout(function() {
+                simonGame.playSequence();
+            }, 1500);
+            return false;
+        } else {
+            // GAME OVER
+            $('.message').text("That was the wrong sequence. Game over!");
+            simonGame.resetGame();
+            simonGame.sequenceLength = 3;
+            $('button').text('Play again?').toggleClass('toggleDisplay');
+            return false;
         }
-        $('.message').text("Great Job! Play again?");
-        simonGame.highScore = simonGame.sequenceLength;
-
-        // high score will reset if window refreshes
-        $('.high-score').text(`Your longest sequence is: ${simonGame.highScore}`);
-        simonGame.sequenceLength++;
-        simonGame.resetGame();
-        $('.start').toggleClass('toggleDisplay');
-    } 
-
-
-    simonGame.resetGame = function() {
-        $('.box').toggleClass('click-enabled');
-        simonGame.sequence = [];
-        simonGame.userSequence = []; 
-        simonGame.userClicks = 0;
-        simonGame.chances = 0;
     }
+    $('.message').text("Great Job! Play again?");
+    simonGame.highScore = simonGame.sequenceLength;
+
+    // high score will reset if window refreshes
+    $('.highScore').text(`Your longest sequence is: ${simonGame.highScore}`);
+    simonGame.sequenceLength++;
+    simonGame.resetGame();
+    $('button').toggleClass('toggleDisplay');
+} 
+
+// reset game for starting a new game/round, doesn't reset high score
+simonGame.resetGame = function() {
+    $('.box').toggleClass('clickEnabled');
+    simonGame.sequence = [];
+    simonGame.userSequence = []; 
+    simonGame.userClicks = 0;
+    simonGame.chances = 0;
+}
+
+// DEAL WITH THISSSSSS !!!!!!!!!!!!!
+// document ready - not sure what to put in here, maybe event handlers?
+$(document).ready(function() {
 
 });
 
 
 // Due to the delay, user has to wait for the message to change to "Now it's your turn!" before clicking, otherwise it won't work 
-// Used fat arrow in user click setTimeout() to make colour change effect, but this creates a problem if user clicks very quickly - just use css?
-    // but then I'd have to make an individual selector (:active) for each box b/c colours are different, and doesn't prevent user from clicking on the square & changing the colour 
-    // also, ok to use just this one fat arrow? I did function expressions for everything else
+    // make an overlay with 3..2..1.. countdown that grays out squares & goes on top of the boxes
 
 // code organization / functional programming / clean up code
