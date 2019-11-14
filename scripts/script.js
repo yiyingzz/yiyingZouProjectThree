@@ -7,26 +7,42 @@ $(function() {
 const simonGame = {};
 
 // streak counter (how long was your longest correct sequence)
-simonGame.counter = 0;
+simonGame.highScore = 0;
 
 // keys is probably a bad name
 
     simonGame.squares = [
         {
             box: ".box0",
-            color: "red"    
+            color: "magenta"    
         },
         {
             box: ".box1",
-            color: "yellow"
+            color: "red"
         },
         {
             box: ".box2",
-            color: "blue"
+            color: "orange"
         },
         {
             box: ".box3",
+            color: "yellow"
+        },
+        {
+            box: ".box4",
             color: "green"
+        },
+        {
+            box: ".box5",
+            color: "blue"
+        },
+        {
+            box: ".box6",
+            color: "indigo"
+        },
+        {
+            box: ".box7",
+            color: "rebeccapurple"
         }
     ];
 
@@ -37,8 +53,7 @@ simonGame.counter = 0;
 $('.start').on('click', function() {
     console.log(" >>> you clicked the start button!");
 
-    // show message - "watch carefully!"
-    $('.messages').text("Watch the sequence carefully!");
+    $('.message').text("Watch the sequence carefully!");
 
     simonGame.makeSequence();
     simonGame.playSequence();
@@ -51,10 +66,11 @@ $('.start').on('click', function() {
 });
 
 
-simonGame.sequence = [];  // array of numbers, which should be index # on keys array
+simonGame.sequenceLength = 3;
+simonGame.sequence = [];  
 
 simonGame.makeSequence = function() {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < simonGame.sequenceLength; i++) {
         const num = Math.floor(Math.random() * simonGame.squares.length);
         simonGame.sequence.push(num); //refactor later or dont
         console.log("logging from sequencer(): ", num);
@@ -69,7 +85,6 @@ simonGame.playSequence = function() {
         // log sequence
         console.log(item, simonGame.squares[item]);
     
-        // here the sequence actually runs
         const square = simonGame.squares[item].box;
         const color = simonGame.squares[item].color;
         setTimeout(function() {
@@ -81,18 +96,14 @@ simonGame.playSequence = function() {
     })
     
     setTimeout(function() {
-        $('.messages').text("Now it's your turn!");
+        $('.message').text("Now it's your turn!");
         $('.box').toggleClass('click-enabled');
-    }, 1600 * 4);
+    }, 1600 * simonGame.sequence.length);
 }
 
-// user has to click the buttons in the correct sequence
-    // it needs a way to remember sequence of use clicks
-    // maybe this would go on an array, then compare it against array of original sequence
-
     simonGame.userSequence = [];
-
     simonGame.userClicks = 0;
+
     // function to grab clicks and put on userSequence array
     $('.game-container').on('click', '.click-enabled', function() {
         const classNames = $(this).attr('class');
@@ -101,13 +112,11 @@ simonGame.playSequence = function() {
         const boxChecker = /[0-9]/;
         const boxMatch = boxChecker.exec(classNames);
         simonGame.userSequence.push(parseInt(boxMatch[0]));
-        
+
         simonGame.userClicks++;
-        
-        if (simonGame.userClicks >= 4 ) {
-            simonGame.compareArrays();
+        if (simonGame.userClicks >= simonGame.sequenceLength ) {
+            simonGame.compareSequences();
         };
-        
     })
 
     
@@ -115,20 +124,26 @@ simonGame.playSequence = function() {
     
     // compare user array to sequence array
     // first, compare array lengths - if they don't match - lose
-    simonGame.compareArrays = function() {
+    simonGame.compareSequences = function() {
         console.log("sequence:", simonGame.sequence);
         console.log("user sequence: ", simonGame.userSequence);
         for (let i = 0; i < simonGame.userSequence.length; i++) {
             if (simonGame.userSequence[i] === simonGame.sequence[i]) {
                 console.log(simonGame.userSequence[i], simonGame.sequence[i]);
             } else {
-                $('.messages').text("That was the wrong sequence. Game over!");
+                $('.message').text("That was the wrong sequence. Game over!");
                 simonGame.resetGame();
+                simonGame.sequenceLength = 3;
                 $('.start').text('Play again?').toggleClass('toggleDisplay');
                 return false;
             }
         }
-        $('.messages').text("Great Job! Play again?");
+        $('.message').text("Great Job! Play again?");
+        simonGame.highScore = simonGame.sequenceLength;
+
+        // high score will reset if window refreshes
+        $('.high-score').text(`Your longest sequence is: ${simonGame.highScore}`);
+        simonGame.sequenceLength++;
         simonGame.resetGame();
         $('.start').toggleClass('toggleDisplay');
     } 
@@ -138,6 +153,7 @@ simonGame.playSequence = function() {
         $('.box').toggleClass('click-enabled');
         simonGame.sequence = [];
         simonGame.userSequence = []; 
+        simonGame.userClicks = 0;
     }
 
 });
