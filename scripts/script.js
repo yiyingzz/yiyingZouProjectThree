@@ -9,8 +9,6 @@ const simonGame = {};
 // streak counter (how long was your longest correct sequence)
 simonGame.highScore = 0;
 
-// keys is probably a bad name
-
     simonGame.squares = [
         {
             box: ".box0",
@@ -110,8 +108,15 @@ simonGame.playSequence = function() {
 
         // grab the right class name using regex
         const boxChecker = /[0-9]/;
-        const boxMatch = boxChecker.exec(classNames);
-        simonGame.userSequence.push(parseInt(boxMatch[0]));
+        const boxNumber = boxChecker.exec(classNames);
+        simonGame.userSequence.push(parseInt(boxNumber[0]));
+
+        $(this).css('background', `${simonGame.squares[boxNumber[0]].color}`);
+        setTimeout(() => {
+            $(this).css('background', 'black');
+            console.log($(this));
+        }, 300);
+        
 
         simonGame.userClicks++;
         if (simonGame.userClicks >= simonGame.sequenceLength ) {
@@ -119,8 +124,6 @@ simonGame.playSequence = function() {
         };
     })
 
-    
-    
     
     // compare user array to sequence array
     // first, compare array lengths - if they don't match - lose
@@ -159,3 +162,9 @@ simonGame.playSequence = function() {
 });
 
 
+// Due to the delay, user has to wait for the message to change to "Now it's your turn!" before clicking, otherwise it won't work 
+// Used fat arrow in user click setTimeout() to make colour change effect, but this creates a problem if user clicks very quickly - just use css?
+    // but then I'd have to make an individual selector (:active) for each box b/c colours are different, and doesn't prevent user from clicking on the square & changing the colour 
+    // also, ok to use just this one fat arrow? I did function expressions for everything else
+
+// code organization / functional programming / clean up code
