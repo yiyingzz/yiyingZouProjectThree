@@ -1,0 +1,36 @@
+// RESPONSIVE STYLES ---------------------------
+@media (max-width: 767px) {
+    main {
+        width: calc(610px);
+    }
+
+    // making boxes smaller
+    .gameGrid {
+        grid-template-columns: repeat(4, 130px);
+        grid-template-rows: repeat(2, 130px);
+    }
+}
+
+@media (max-width: 650px) {
+    main {
+        width: 490px;
+    }
+
+    // making boxes smaller
+    .gameGrid {
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(2, 100px);
+        grid-gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        width: 85%;
+    }
+    
+    .gameGrid {
+        grid-template-columns: repeat(2, 100px);
+        grid-template-rows: repeat(4, 100px);
+    }
+}

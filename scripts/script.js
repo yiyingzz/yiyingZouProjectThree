@@ -136,7 +136,7 @@ simonGame.playSequence = function() {
 
 // THIS IS WHERE USER CLICKS
 // function to grab clicks and put on userSequence array
-$('.gameContainer').on('click', '.clickEnabled', function() {
+$('.gameGrid').on('click', '.clickEnabled', function() {
     console.log("logging user clicks", $(this));
     const classNames = $(this).attr('class');
 
