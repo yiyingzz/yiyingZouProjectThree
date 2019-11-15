@@ -35,7 +35,7 @@ button {
     position: relative;
 }
 
-.instructionsOverlay {
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -46,9 +46,11 @@ button {
     justify-content: center;
 }
 
-.message {
+.overlayMessage {
     background: white;
     border: 1px dashed deeppink;
+    width: 50%;
+    padding: 30px 0;
 }
 
 .box {
@@ -56,7 +58,7 @@ button {
     // border: 1px dashed lime;
 }
 
-.toggleDisplay {
+.displayNone {
     display: none;
 }
 

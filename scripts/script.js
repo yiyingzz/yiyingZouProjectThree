@@ -44,16 +44,18 @@ simonGame.squares = [
 $('button').on('click', function() {
     console.log(' >>> you clicked the start button!');
 
-    $('.message').text('Watch the sequence carefully!');
+    // SHOW overlay
+    // $('.overlay').toggleClass('displayNone');
+    // $('.overlayMessage').text('Watch the sequence carefully!');
 
     simonGame.makeSequence();
     simonGame.playSequence();
 
     // make button disappear
-    $(this).toggleClass('toggleDisplay');
+    $(this).toggleClass('displayNone');
 
     // make 'continue' button appear - will prob have to move this to after the user clicks a sequence
-    $('.continue').toggleClass('toggleDisplay');
+    $('.continue').toggleClass('displayNone');
 });
 
 
@@ -63,7 +65,9 @@ simonGame.sequence = [];
 simonGame.makeSequence = function() {
     for (let i = 0; i < simonGame.sequenceLength; i++) {
         const num = Math.floor(Math.random() * simonGame.squares.length);
-        simonGame.sequence.push(num); //refactor later or dont
+
+        //refactor later or dont ????????????????
+        simonGame.sequence.push(num); 
         console.log('logging from sequencer(): ', num);
     }
     console.log('whole sequence: ', simonGame.sequence);
@@ -87,8 +91,15 @@ simonGame.playSequence = function() {
     })
     
     setTimeout(function() {
-        $('.message').toggleClass('toggleDisplay').text(`Now it's your turn!`);
-        $('.box').toggleClass('clickEnabled');
+        // show overlay box
+        $('.overlay').toggleClass('displayNone');
+        $('.overlayMessage').text(`Now it's your turn!`);
+        setTimeout(function() {
+            // HIDE overlay box
+            $('.overlay').toggleClass('displayNone'); 
+            // allow clicking on boxes
+            $('.box').toggleClass('clickEnabled');
+        }, 500)
     }, 1600 * simonGame.sequence.length);
 }
 
@@ -97,6 +108,9 @@ simonGame.userClicks = 0;
 
 // function to grab clicks and put on userSequence array
 $('.gameContainer').on('click', '.clickEnabled', function() {
+
+    console.log($(this));
+
     const classNames = $(this).attr('class');
 
     // grab the right class name using regex
@@ -132,7 +146,9 @@ simonGame.compareSequences = function() {
             console.log(simonGame.userSequence[i], simonGame.sequence[i]);
         } else if (simonGame.chances === 1) {
             // second chance
-            $('.message').text(`That was the wrong sequence. You get one more chance. Watch carefully!`);
+            // show overlay box & message
+            $('.overlay').toggleClass('displayNone');
+            $('.overlayMessage').text(`That was the wrong sequence. You get one more chance. Watch carefully!`);
             // reset user clicks & sequence
             simonGame.userClicks = 0;
             simonGame.userSequence = [];
@@ -141,26 +157,42 @@ simonGame.compareSequences = function() {
             
             // give user a slight delay
             setTimeout(function() {
+
+                // toggle OFF overlay
+                $('.overlay').toggleClass('displayNone');
                 simonGame.playSequence();
             }, 1500);
             return false;
         } else {
             // GAME OVER
-            $('.message').text(`That was the wrong sequence. Game over!`);
+
+            // SHOW overlay
+            $('.overlay').toggleClass('displayNone');
+            $('.overlayMessage').text(`That was the wrong sequence. Game over!`);
+            
             simonGame.resetGame();
             simonGame.sequenceLength = 3;
-            $('button').text('Play again?').toggleClass('toggleDisplay');
+            $('button').text('Play again?').toggleClass('displayNone');
             return false;
         }
-    }
-    $('.message').text(`Great Job! Play again?`);
+    } // end of for loop
+
+    //SHOW OVERLAY --- BUT WHY IS IT HIDING IT
+    $('.overlay').toggleClass('displayNone'); // <<<<<<<<<<< happening too fast
+    $('.overlayMessage').text(`Great Job! Play again?`);
+
     simonGame.highScore = simonGame.sequenceLength;
+    console.log(simonGame.highScore);
 
     // high score will reset if window refreshes
     $('.highScore').text(`Your longest sequence is: ${simonGame.highScore}`);
     simonGame.sequenceLength++;
-    simonGame.resetGame();
-    $('button').toggleClass('toggleDisplay');
+
+    
+    setTimeout(function() {
+        simonGame.resetGame(); // <<<<<<<<<<<<<<<<<<<<<<<< happening too fast
+        $('button').toggleClass('displayNone');
+    }, 800)
 } 
 
 // reset game for starting a new game/round, doesn't reset high score
@@ -170,6 +202,8 @@ simonGame.resetGame = function() {
     simonGame.userSequence = []; 
     simonGame.userClicks = 0;
     simonGame.chances = 0;
+    // HIDE OVERLAY
+    $('.overlay').toggleClass('displayNone');
 }
 
 // DEAL WITH THISSSSSS !!!!!!!!!!!!!
@@ -185,5 +219,10 @@ $(document).ready(function() {
 // DESIGN/UI - ask Fatima
 
 // grid & flexbox used together - ask Helpcue
+// refactor my flexboxes 
+
+// what to put in my doc ready if I don't need to initialize a function
+
+// is my sass ok? literally 1 scss file, not even a partial
 
 // code organization / functional programming / clean up code
