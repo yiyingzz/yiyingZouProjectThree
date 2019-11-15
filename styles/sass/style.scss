@@ -65,6 +65,48 @@ button {
     display: none;
 }
 
+// CLICKING COLORS WITH CSS --------------------------
+
+.coloredBox0,
+.clickEnabledBox0:active {
+    background: #ff00ff;
+}
+
+.coloredBox1,
+.clickEnabledBox1:active {
+    background: #ff0000;
+}
+
+.coloredBox2,
+.clickEnabledBox2:active {
+    background: #ff6600;
+}
+
+.coloredBox3,
+.clickEnabledBox3:active {
+    background: #ffee00;
+}
+
+.coloredBox4,
+.clickEnabledBox4:active {
+    background: #00ff00;
+}
+
+.coloredBox5,
+.clickEnabledBox5:active {
+    background: #0099ff;
+}
+
+.coloredBox6,
+.clickEnabledBox6:active {
+    background: #4400ff;
+}
+
+.coloredBox7,
+.clickEnabledBox7:active {
+    background: #9900ff;
+}
+
 
 // RESPONSIVE STYLES ---------------------------
 @media (max-width: 767px) {
