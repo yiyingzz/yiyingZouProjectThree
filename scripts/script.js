@@ -66,7 +66,7 @@ $('button').on('click', function() {
         $('.overlayMessage').addClass('displayNone');
         simonGame.makeSequence();
         simonGame.playSequence();
-    }, 500)
+    }, 800)
 });
 
  
@@ -130,7 +130,7 @@ simonGame.playSequence = function() {
             $('.overlay').addClass('displayNone'); 
             // allow clicking on boxes
             $('.box').addClass('clickEnabled');
-        }, 500)
+        }, 800)
     }, 1600 * simonGame.sequence.length);
 }
 
@@ -169,12 +169,14 @@ simonGame.compareSequences = function() {
     
     for (let i = 0; i < simonGame.userSequence.length; i++) {
         if (simonGame.userSequence[i] === simonGame.sequence[i]) {
+
+            // literally nothing happening here, it's just a check
             console.log(simonGame.userSequence[i], simonGame.sequence[i]);
         } else if (simonGame.chances === 1) {
             // second chance
             // show overlay box & message
             $('.overlay').removeClass('displayNone');
-            $('.overlayMessage').text(`That was the wrong sequence. You get one more chance. Watch carefully!`);
+            $('.overlayMessage').text(`That was the wrong sequence. You, get one more chance. Watch carefully!`);
             // reset user clicks & sequence
             simonGame.userClicks = 0;
             simonGame.userSequence = [];
@@ -187,16 +189,19 @@ simonGame.compareSequences = function() {
                 // toggle OFF overlay
                 $('.overlay').addClass('displayNone');
                 simonGame.playSequence();
-            }, 1500);
+            }, 800);
             return false;
         } else {
             // GAME OVER
 
             // SHOW overlay
-            $('.overlay').addClass('displayNone');
+            $('.overlay').removeClass('displayNone');
             $('.overlayMessage').text(`That was the wrong sequence. Game over!`);
             
-            simonGame.resetGame();
+            setTimeout(function() {
+                simonGame.resetGame();
+            }, 800)
+
             simonGame.sequenceLength = 3;
             $('button').text('Play again?').removeClass('displayNone');
             return false;
@@ -204,8 +209,8 @@ simonGame.compareSequences = function() {
     } // end of for loop
 
     //SHOW OVERLAY --- BUT WHY IS IT HIDING IT
-    $('.overlay').addClass('displayNone'); // <<<<<<<<<<< happening too fast
-    $('.overlayMessage').text(`Great Job! Play again?`);
+    $('.overlay').removeClass('displayNone'); // <<<<<<<<<<< happening too fast
+    $('.overlayMessage').text(`Great Job! Continue playing?`);
 
     simonGame.countHighScore();
 
