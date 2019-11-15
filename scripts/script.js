@@ -3,7 +3,7 @@ const simonGame = {};
 // streak counter (how long was your longest correct sequence)
 simonGame.highScore = 0;
 
-simonGame.squares = [
+simonGame.boxes = [
     {
         box: '.box0',
         color: '#ff00ff'    
@@ -64,7 +64,7 @@ simonGame.sequence = [];
 
 simonGame.makeSequence = function() {
     for (let i = 0; i < simonGame.sequenceLength; i++) {
-        const num = Math.floor(Math.random() * simonGame.squares.length);
+        const num = Math.floor(Math.random() * simonGame.boxes.length);
 
         //refactor later or dont ????????????????
         simonGame.sequence.push(num); 
@@ -78,14 +78,14 @@ simonGame.makeSequence = function() {
 simonGame.playSequence = function() { 
     simonGame.sequence.forEach(function(item, i) {
         // log sequence
-        console.log(item, simonGame.squares[item]);
+        console.log(item, simonGame.boxes[item]);
     
-        const square = simonGame.squares[item].box;
-        const color = simonGame.squares[item].color;
+        const box = simonGame.boxes[item].box;
+        const color = simonGame.boxes[item].color;
         setTimeout(function() {
-            $(square).css('background', color);
+            $(box).css('background', color);
             setTimeout(function() {
-                $(square).css('background', 'black');
+                $(box).css('background', 'black');
             }, 800);
         }, i * 1600);
     })
@@ -117,7 +117,7 @@ $('.gameContainer').on('click', '.clickEnabled', function() {
     boxNumber = classNames.match(/[0-9]/);
     simonGame.userSequence.push(parseInt(boxNumber[0]));
 
-    $(this).css('background', `${simonGame.squares[boxNumber[0]].color}`);
+    $(this).css('background', `${simonGame.boxes[boxNumber[0]].color}`);
     setTimeout(() => {
         $(this).css('background', 'black');
         console.log($(this));

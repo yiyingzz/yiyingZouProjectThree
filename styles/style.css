@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  font-family: 'Rubik', sans-serif;
   font-size: 2rem;
   padding: 0;
   margin: 0;
@@ -12,11 +13,13 @@ body {
 
 h1 {
   margin: 0;
+  font-weight: 500;
 }
 
 button {
   padding: 15px 40px;
   font-size: inherit;
+  text-transform: uppercase;
 }
 
 .wrapper {
@@ -66,6 +69,7 @@ button {
 
 .box {
   background: black;
+  border: 1px dashed lime;
 }
 
 .displayNone {
@@ -73,6 +77,9 @@ button {
 }
 
 @media (max-width: 767px) {
+  .wrapper {
+    width: calc(610px);
+  }
   .gameContainer {
     -ms-grid-columns: (130px)[4];
         grid-template-columns: repeat(4, 130px);
@@ -82,10 +89,26 @@ button {
 }
 
 @media (max-width: 650px) {
+  .wrapper {
+    width: 490px;
+  }
   .gameContainer {
     -ms-grid-columns: (100px)[4];
         grid-template-columns: repeat(4, 100px);
     -ms-grid-rows: (100px)[2];
         grid-template-rows: repeat(2, 100px);
+    grid-gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    width: 85%;
+  }
+  .gameContainer {
+    -ms-grid-columns: (100px)[2];
+        grid-template-columns: repeat(2, 100px);
+    -ms-grid-rows: (100px)[4];
+        grid-template-rows: repeat(4, 100px);
   }
 }
