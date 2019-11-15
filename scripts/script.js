@@ -5,36 +5,36 @@ simonGame.highScore = 0;
 
 simonGame.squares = [
     {
-        box: ".box0",
-        color: "#ff00ff"    
+        box: '.box0',
+        color: '#ff00ff'    
     },
     {
-        box: ".box1",
-        color: "#ff0000"
+        box: '.box1',
+        color: '#ff0000'
     },
     {
-        box: ".box2",
-        color: "#ff6600"
+        box: '.box2',
+        color: '#ff6600'
     },
     {
-        box: ".box3",
-        color: "#ffee00"
+        box: '.box3',
+        color: '#ffee00'
     },
     {
-        box: ".box4",
-        color: "#00ff00"
+        box: '.box4',
+        color: '#00ff00'
     },
     {
-        box: ".box5",
-        color: "#0099ff"
+        box: '.box5',
+        color: '#0099ff'
     },
     {
-        box: ".box6",
-        color: "#4400ff"
+        box: '.box6',
+        color: '#4400ff'
     },
     {
-        box: ".box7",
-        color: "#9900ff"
+        box: '.box7',
+        color: '#9900ff'
     }
 ];
 
@@ -42,9 +42,9 @@ simonGame.squares = [
 // click 'start' button
 
 $('button').on('click', function() {
-    console.log(" >>> you clicked the start button!");
+    console.log(' >>> you clicked the start button!');
 
-    $('.message').text("Watch the sequence carefully!");
+    $('.message').text('Watch the sequence carefully!');
 
     simonGame.makeSequence();
     simonGame.playSequence();
@@ -64,9 +64,9 @@ simonGame.makeSequence = function() {
     for (let i = 0; i < simonGame.sequenceLength; i++) {
         const num = Math.floor(Math.random() * simonGame.squares.length);
         simonGame.sequence.push(num); //refactor later or dont
-        console.log("logging from sequencer(): ", num);
+        console.log('logging from sequencer(): ', num);
     }
-    console.log("whole sequence: ", simonGame.sequence);
+    console.log('whole sequence: ', simonGame.sequence);
 };
 
 
@@ -87,7 +87,7 @@ simonGame.playSequence = function() {
     })
     
     setTimeout(function() {
-        $('.message').text("Now it's your turn!");
+        $('.message').toggleClass('toggleDisplay').text(`Now it's your turn!`);
         $('.box').toggleClass('clickEnabled');
     }, 1600 * simonGame.sequence.length);
 }
@@ -121,8 +121,8 @@ simonGame.chances = 0;
 simonGame.compareSequences = function() {
 
     // logging the two arrays
-    console.log("sequence:", simonGame.sequence);
-    console.log("user sequence: ", simonGame.userSequence);
+    console.log('sequence:', simonGame.sequence);
+    console.log('user sequence: ', simonGame.userSequence);
 
     simonGame.chances++;
     console.log(simonGame.chances);
@@ -132,7 +132,7 @@ simonGame.compareSequences = function() {
             console.log(simonGame.userSequence[i], simonGame.sequence[i]);
         } else if (simonGame.chances === 1) {
             // second chance
-            $('.message').text("That was the wrong sequence. You get one more chance. Watch carefully!");
+            $('.message').text(`That was the wrong sequence. You get one more chance. Watch carefully!`);
             // reset user clicks & sequence
             simonGame.userClicks = 0;
             simonGame.userSequence = [];
@@ -146,14 +146,14 @@ simonGame.compareSequences = function() {
             return false;
         } else {
             // GAME OVER
-            $('.message').text("That was the wrong sequence. Game over!");
+            $('.message').text(`That was the wrong sequence. Game over!`);
             simonGame.resetGame();
             simonGame.sequenceLength = 3;
             $('button').text('Play again?').toggleClass('toggleDisplay');
             return false;
         }
     }
-    $('.message').text("Great Job! Play again?");
+    $('.message').text(`Great Job! Play again?`);
     simonGame.highScore = simonGame.sequenceLength;
 
     // high score will reset if window refreshes
@@ -181,5 +181,9 @@ $(document).ready(function() {
 
 // Due to the delay, user has to wait for the message to change to "Now it's your turn!" before clicking, otherwise it won't work 
     // make an overlay with 3..2..1.. countdown that grays out squares & goes on top of the boxes
+
+// DESIGN/UI - ask Fatima
+
+// grid & flexbox used together - ask Helpcue
 
 // code organization / functional programming / clean up code

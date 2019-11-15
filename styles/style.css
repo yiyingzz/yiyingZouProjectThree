@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding: 0;
   margin: 0;
   height: 100vh;
@@ -20,9 +20,9 @@ button {
 }
 
 .wrapper {
-  max-width: 1200px;
-  width: 85%;
+  width: 700px;
   margin: 0 auto;
+  border: 1px solid deeppink;
 }
 
 .gameContainer {
@@ -37,13 +37,53 @@ button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
+}
+
+.instructionsOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.message {
+  background: white;
+  border: 1px dashed deeppink;
 }
 
 .box {
   background: black;
-  border: 1px dashed lime;
 }
 
 .toggleDisplay {
   display: none;
+}
+
+@media (max-width: 767px) {
+  .gameContainer {
+    -ms-grid-columns: (130px)[4];
+        grid-template-columns: repeat(4, 130px);
+    -ms-grid-rows: (130px)[2];
+        grid-template-rows: repeat(2, 130px);
+  }
+}
+
+@media (max-width: 650px) {
+  .gameContainer {
+    -ms-grid-columns: (100px)[4];
+        grid-template-columns: repeat(4, 100px);
+    -ms-grid-rows: (100px)[2];
+        grid-template-rows: repeat(2, 100px);
+  }
 }
