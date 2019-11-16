@@ -34,14 +34,8 @@ header {
 }
 
 main {
-  width: 700px;
+  width: 100%;
   margin: 0 auto;
-}
-
-@media (max-width: 767px) {
-  main {
-    width: calc(610px);
-  }
 }
 
 @media (max-width: 480px) {
@@ -66,6 +60,12 @@ h1 {
   font-size: 4rem;
 }
 
+@media (max-width: 769px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+}
+
 @media (max-width: 480px) {
   h1 {
     font-size: 2.7rem;
@@ -77,6 +77,13 @@ h2 {
   font-size: 3rem;
 }
 
+@media (max-width: 769px) {
+  h2 {
+    font-size: 2.2rem;
+    margin: 0;
+  }
+}
+
 @media (max-width: 480px) {
   h2 {
     font-size: 2.4rem;
@@ -85,6 +92,12 @@ h2 {
 
 h3 {
   font-size: 2.4rem;
+}
+
+@media (max-width: 769px) {
+  h3 {
+    font-size: 2rem;
+  }
 }
 
 i,
@@ -153,6 +166,13 @@ button:hover, button:focus {
   background: #fff;
 }
 
+@media (max-width: 769px) {
+  .gameContainer {
+    width: 90%;
+    padding: 10px 10px 0;
+  }
+}
+
 @media (max-width: 480px) {
   .gameContainer {
     padding: 5px 5px 0;
@@ -175,22 +195,13 @@ button:hover, button:focus {
   border: 1px solid crimson;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 769px) {
   .gameGrid {
-    -ms-grid-columns: (130px)[4];
-        grid-template-columns: repeat(4, 130px);
-    -ms-grid-rows: (130px)[2];
-        grid-template-rows: repeat(2, 130px);
-  }
-}
-
-@media (max-width: 680px) {
-  .gameGrid {
-    -ms-grid-columns: (100px)[4];
-        grid-template-columns: repeat(4, 100px);
-    -ms-grid-rows: (100px)[2];
-        grid-template-rows: repeat(2, 100px);
-    margin: 10px 5px;
+    margin: 0;
+    -ms-grid-columns: (80px)[4];
+        grid-template-columns: repeat(4, 80px);
+    -ms-grid-rows: (80px)[2];
+        grid-template-rows: repeat(2, 80px);
   }
 }
 
@@ -230,9 +241,9 @@ button:hover, button:focus {
   background: #fff;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 769px) {
   .instructions {
-    padding: 10px;
+    padding: 0;
   }
 }
 
@@ -247,9 +258,11 @@ button:hover, button:focus {
   margin-top: 8px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 769px) {
   .instructions p {
-    width: 85%;
+    width: 100%;
+    line-height: 1;
+    margin: 10px auto;
   }
 }
 
@@ -263,6 +276,14 @@ button:hover, button:focus {
 
 .highScoreContainer p {
   margin: 0 0 5px 0;
+}
+
+@media (max-width: 767px) {
+  .highScoreContainer p {
+    margin-top: 4px;
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
 }
 
 footer p {
