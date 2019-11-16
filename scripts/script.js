@@ -48,64 +48,32 @@ simonGame.sequenceLength = 3;
 simonGame.sequence = []; 
 simonGame.userSequence = [];
 simonGame.userClicks = 0;
-simonGame.highScore = 0; // maybe change this to longestStreak
+simonGame.chances = 0;
+simonGame.highScore = 0; // maybe change this to longestStreak ><<<<<<<<<<<<<< // ><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+localStorage.setItem(simonGame.highScore, simonGame.highscore); 
+// ^^^^^^^^^^^^ can't use same params, must be key - 'value'
 
-
-// click 'start' button
-$('button').on('click', function() {
-    console.log(' >>> you clicked the start button!');
-
-    // SHOW overlay
-    $('.overlay').removeClass('displayNone');
-    $('.overlayMessage').text('Watch the sequence carefully!');
-    
-    // make button disappear
-    $(this).removeClass('displayNone');
-
-    setTimeout(function() {
-        $('.overlayMessage').addClass('displayNone');
-        simonGame.makeSequence();
-        simonGame.playSequence();
-    }, 800)
-});
-
- 
-
+// function to create the sequence
 simonGame.makeSequence = function() {
     for (let i = 0; i < simonGame.sequenceLength; i++) {
-        const num = Math.floor(Math.random() * simonGame.boxes.length);
+        const randomNum = Math.floor(Math.random() * simonGame.boxes.length);
 
         //refactor later or dont ????????????????
-        simonGame.sequence.push(num); 
-        console.log('logging from sequencer(): ', num);
+        simonGame.sequence.push(randomNum); 
+        console.log('logging from sequencer(): ', randomNum);
     }
     console.log('whole sequence: ', simonGame.sequence);
 };
 
-
 // function to run the sequence on the html page
 simonGame.playSequence = function() { 
     simonGame.sequence.forEach(function(item, i) {
-        // log sequence
-
-        // vvvvvvvvv ITEM RIGHT NOW IS # on SEQUEUNCE ARRAY
-        // NEED TO MATCH IT TO BOXES ARRAY
-        console.log("logging item:", item);
-        console.log("loggin simonGame.boxes[item].box:", simonGame.boxes[item].box);
-        console.log("loggin simonGame.boxes[item].class:", simonGame.boxes[item].class);
-
         const boxNum = simonGame.boxes[item].box;
         const boxColor = simonGame.boxes[item].color;
         
-
         setTimeout(function() {            
             // make sequence boxes show their color (toggle colour ON)
             $(boxNum).addClass(boxColor);
-
-            // enable click colour on all boxes
-            // only working on boxes in the sequence, not EVERY SINGLE BOX
-            // also need to take it off later (HAVEN'T DONE IT YET)
-            // $(boxNum).toggleClass(boxClass);
             
             setTimeout(function() {            
                 // boxes go back to black (toggle colour OFF)
@@ -113,17 +81,11 @@ simonGame.playSequence = function() {
             }, 800);
         }, i * 1600);
 
-        // enable clicking colour on all boxes
-        // THIS HAPPENS TOOOOOOO EARLY
-        // ALSO NEED TO TURN IT OFF LATER
-        simonGame.boxes.forEach(function(item) {
-            $(item.box).addClass(item.clickColor);
-        })
+        simonGame.addClickColors();
     })
     
     setTimeout(function() {
         // show overlay message
-        // $('.overlay').toggleClass('displayNone');
         $('.overlayMessage').removeClass('displayNone').text(`Now it's your turn!`);
         setTimeout(function() {
             // HIDE overlay box
@@ -133,24 +95,6 @@ simonGame.playSequence = function() {
         }, 800)
     }, 1600 * simonGame.sequence.length);
 }
-
-// THIS IS WHERE USER CLICKS
-// function to grab clicks and put on userSequence array
-$('.gameGrid').on('click', '.clickEnabled', function() {
-    console.log("logging user clicks", $(this));
-    const classNames = $(this).attr('class');
-
-    // grab the right class name using regex
-    boxNumber = classNames.match(/[0-9]/);
-    simonGame.userSequence.push(parseInt(boxNumber[0]));
-
-    simonGame.userClicks++;
-    if (simonGame.userClicks >= simonGame.sequenceLength ) {
-        simonGame.compareSequences();
-    };
-})
-
-simonGame.chances = 0;
 
 // function to enable colour-changing on boxes when clicked
 simonGame.addClickColors = function() {
@@ -165,8 +109,8 @@ simonGame.removeClickColors = function() {
         $(item.box).removeClass(item.clickColor);
     })
 }
-    
-// compare user array to sequence array
+
+// function to compare user array to sequence array
 simonGame.compareSequences = function() {
 
     simonGame.removeClickColors();
@@ -204,8 +148,8 @@ simonGame.compareSequences = function() {
             // give user a slight delay
             setTimeout(function() {
 
-                // toggle OFF overlay
-                $('.overlay').addClass('displayNone');
+                // toggle ON overlay
+                $('.overlayMessage').addClass('displayNone');
                 simonGame.playSequence();
             }, 800);
             return false;
@@ -226,7 +170,7 @@ simonGame.compareSequences = function() {
         }
     } // end of for loop
 
-    //SHOW OVERLAY --- BUT WHY IS IT HIDING IT
+    //show overlay
     $('.overlay').removeClass('displayNone'); 
     $('.overlayMessage').text(`Great Job! Continue playing?`);
 
@@ -234,15 +178,20 @@ simonGame.compareSequences = function() {
 
     setTimeout(function() {
         simonGame.resetGame(); 
-        $('button').removeClass('displayNone');
+        $('button').removeClass('displayNone').text('Continue');
     }, 800)
 } 
 
-
-// high score counter - will reset if window refreshes
+// VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+// vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+// high score counter - will reset if window refreshes <<<<<<<<<<<<<<<<<<<<<<<<<
 simonGame.countHighScore = function() {
     simonGame.highScore = simonGame.sequenceLength;
+    //  NEED IF STATEMENT HERE???
+    localStorage.setItem(simonGame.highScore, simonGame.highscore);
     $('.highScore').text(`Your longest sequence is: ${simonGame.highScore}`);
+    console.log("logging sequence length");
+    console.log("logging localStorage:", localStorage[simonGame.highScore]);
     simonGame.sequenceLength++;
 }
 
@@ -253,9 +202,49 @@ simonGame.resetGame = function() {
     simonGame.userSequence = []; 
     simonGame.userClicks = 0;
     simonGame.chances = 0;
-    // HIDE OVERLAY
+    // hide OVERLAY
     $('.overlay').addClass('displayNone');
 }
+
+// click 'start' button
+$('button').on('click', function() {
+
+    // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+    console.log("checking if localstorage is saving: ", localStorage[simonGame.highScore]);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    // show overlay
+    $('.overlay').removeClass('displayNone');
+    $('.overlayMessage').text('Watch the sequence carefully!');
+    
+    // make button disappear
+    $(this).addClass('displayNone');
+
+    setTimeout(function() {
+        $('.overlayMessage').addClass('displayNone');
+        simonGame.makeSequence();
+        simonGame.playSequence();
+    }, 800)
+});
+
+// this is where user clicks
+// event to grab clicks and put on userSequence array
+$('.gameGrid').on('click', '.clickEnabled', function() {
+    console.log("logging user clicks", $(this));
+
+    // grab the box number using regex
+    const classNames = $(this).attr('class');
+    boxNumber = classNames.match(/[0-9]/);
+    simonGame.userSequence.push(parseInt(boxNumber[0]));
+
+    simonGame.userClicks++;
+    if (simonGame.userClicks >= simonGame.sequenceLength ) {
+        simonGame.compareSequences();
+    };
+})
+
+
+
 
 // DEAL WITH THISSSSSS !!!!!!!!!!!!!
 // document ready - not sure what to put in here, maybe event handlers?
@@ -264,13 +253,11 @@ $(document).ready(function() {
 });
 
 
-// NEED TO DISABLE/RE-ENABLE CLICKING UPON GETTING A SECOND CHANCE
-// "NOW it's your turn" doesn't seem to show up on second chance
+
 // should I reverse simonGame.chances to count down instead of up?
 // style overlay -maybe add drop-shadow???
 // styling in general, button, hover border should be thicker, border-radius?, better font for headings, footer styling
 // should box colours be brighter/lighter?
-// change button to say "continue" upon succesful round?
 
 
 
