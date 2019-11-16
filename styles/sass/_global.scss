@@ -21,17 +21,29 @@ main {
     margin: 0 auto;
 }
 
+h1,
+h2,
+h3 {
+    font-family: 'Quantico', sans-serif;
+}
+
 h1 {
     margin: 0;
     font-weight: 500;
-    color: #9900ff;
+    color: #ad33ff;
 }
 
 h2 {
-    margin: 10px 0;
+    margin: 5px 0;
 
     i {
         cursor: pointer;
+        color: #ad33ff;
+        transition: 0.3s all;
+
+        &:hover {
+            color: yellow;
+        }
     }
 }
 
@@ -41,20 +53,20 @@ h2 {
 }
 
 button {
-    padding: 15px 40px;
+    padding: 5px 30px;
     font-size: inherit;
     text-transform: uppercase;
-    border: 0;
-    color: white;
-    background: #9900ff;
+    border: 5px solid #ad33ff;
+    background: #ad33ff;
+    color: #fff;
     cursor: pointer;
     transition: 0.3s all;
-}
-
-button:hover,
-button:focus {
-    color: #9900ff;
-    background: #fff;
+    
+    &:hover,
+    &:focus {
+        color: #ad33ff;
+        background: #fff;
+    }
 }
 
 .flexContainer {
@@ -64,20 +76,23 @@ button:focus {
 }
 
 .gameContainer {
+    max-height: 95vh;
     width: 800px;
-    padding: 50px 50px 0;
+    padding: 20px 20px 0;
     margin: 0 auto;
     background: #fff;
 }
 
 .gameGrid {
-    margin: 30px auto;
+    margin: 20px auto;
     display: grid;
     grid-template-columns: repeat(4, 150px);
     grid-template-rows: repeat(2, 150px);
     grid-gap: 30px;
     justify-content: center;
     position: relative;
+
+    border: 1px solid crimson;
 }
 
 .overlay,
@@ -91,7 +106,7 @@ button:focus {
 
 
 .overlayMessageContainer {
-    width: 50%;
+    width: 65%;
     background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
     padding: 10px;
     
@@ -99,7 +114,7 @@ button:focus {
 
 .overlayMessage {
     background: white;
-    padding: 30px 0;
+    padding: 30px;
     margin: 0;
     // border: 3px solid #9900ff;
 }
@@ -131,6 +146,26 @@ button:focus {
     display: none;
 }
 
+.highScoreContainer {
+    height: 30px;
+    border: 1px solid deepskyblue;
+
+    p {
+        margin: 0 0 5px 0;
+    }
+}
+
 footer p {
     font-size: 1.6rem;
+    margin-bottom: 3px;
 }
+
+
+// TESTING border-radius
+// .box,
+// .gameContainer,
+// button,
+// .overlayMessageContainer,
+// .overlayMessage {
+//     border-radius: 20px;
+// }

@@ -21,18 +21,31 @@ main {
   margin: 0 auto;
 }
 
+h1,
+h2,
+h3 {
+  font-family: 'Quantico', sans-serif;
+}
+
 h1 {
   margin: 0;
   font-weight: 500;
-  color: #9900ff;
+  color: #ad33ff;
 }
 
 h2 {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 h2 i {
   cursor: pointer;
+  color: #ad33ff;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+h2 i:hover {
+  color: yellow;
 }
 
 .buttonContainer {
@@ -41,20 +54,19 @@ h2 i {
 }
 
 button {
-  padding: 15px 40px;
+  padding: 5px 30px;
   font-size: inherit;
   text-transform: uppercase;
-  border: 0;
-  color: white;
-  background: #9900ff;
+  border: 5px solid #ad33ff;
+  background: #ad33ff;
+  color: #fff;
   cursor: pointer;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
 
-button:hover,
-button:focus {
-  color: #9900ff;
+button:hover, button:focus {
+  color: #ad33ff;
   background: #fff;
 }
 
@@ -71,14 +83,15 @@ button:focus {
 }
 
 .gameContainer {
+  max-height: 95vh;
   width: 800px;
-  padding: 50px 50px 0;
+  padding: 20px 20px 0;
   margin: 0 auto;
   background: #fff;
 }
 
 .gameGrid {
-  margin: 30px auto;
+  margin: 20px auto;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (150px)[4];
@@ -90,6 +103,7 @@ button:focus {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  border: 1px solid crimson;
 }
 
 .overlay,
@@ -102,7 +116,7 @@ button:focus {
 }
 
 .overlayMessageContainer {
-  width: 50%;
+  width: 65%;
   background: -webkit-gradient(linear, left top, right bottom, from(palevioletred), color-stop(palegoldenrod), to(skyblue));
   background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
   padding: 10px;
@@ -110,7 +124,7 @@ button:focus {
 
 .overlayMessage {
   background: white;
-  padding: 30px 0;
+  padding: 30px;
   margin: 0;
 }
 
@@ -138,8 +152,18 @@ button:focus {
   display: none;
 }
 
+.highScoreContainer {
+  height: 30px;
+  border: 1px solid deepskyblue;
+}
+
+.highScoreContainer p {
+  margin: 0 0 5px 0;
+}
+
 footer p {
   font-size: 1.6rem;
+  margin-bottom: 3px;
 }
 
 .coloredBox0,
@@ -227,6 +251,94 @@ footer p {
 .clickEnabledBox7:hover,
 .clickEnabledBox7:focus {
   border: 5px solid #9900ff;
+  cursor: pointer;
+}
+
+.coloredBox0,
+.clickEnabledBox0:active {
+  background: #ff3dff;
+}
+
+.clickEnabledBox0:hover,
+.clickEnabledBox0:focus {
+  border: 10px solid #ff00ff;
+  cursor: pointer;
+}
+
+.coloredBox1,
+.clickEnabledBox1:active {
+  background: #ff3939;
+}
+
+.clickEnabledBox1:hover,
+.clickEnabledBox1:focus {
+  border: 10px solid #ff3939;
+  cursor: pointer;
+}
+
+.coloredBox2,
+.clickEnabledBox2:active {
+  background: #ff771b;
+}
+
+.clickEnabledBox2:hover,
+.clickEnabledBox2:focus {
+  border: 10px solid #ff771b;
+  cursor: pointer;
+}
+
+.coloredBox3,
+.clickEnabledBox3:active {
+  background: #ffee00;
+}
+
+.clickEnabledBox3:hover,
+.clickEnabledBox3:focus {
+  border: 10px solid #ffee00;
+  cursor: pointer;
+}
+
+.coloredBox4,
+.clickEnabledBox4:active {
+  background: #00ff00;
+}
+
+.clickEnabledBox4:hover,
+.clickEnabledBox4:focus {
+  border: 10px solid #00ff00;
+  cursor: pointer;
+}
+
+.coloredBox5,
+.clickEnabledBox5:active {
+  background: #0099ff;
+}
+
+.clickEnabledBox5:hover,
+.clickEnabledBox5:focus {
+  border: 10px solid #0099ff;
+  cursor: pointer;
+}
+
+.coloredBox6,
+.clickEnabledBox6:active {
+  background: #4a3dff;
+}
+
+.clickEnabledBox6:hover,
+.clickEnabledBox6:focus {
+  border: 10px solid #4a3dff;
+  cursor: pointer;
+}
+
+.coloredBox7,
+.clickEnabledBox7:active {
+  background: #ad33ff;
+}
+
+.clickEnabledBox7:hover,
+.clickEnabledBox7:focus {
+  border: 10px solid #ad33ff;
   cursor: pointer;
 }
 

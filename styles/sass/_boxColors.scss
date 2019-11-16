@@ -88,3 +88,105 @@
     border: 5px solid #9900ff;
     cursor: pointer;
 }
+
+
+
+
+// COLOUR TEST --------------------------
+
+// .box0,
+.coloredBox0,
+.clickEnabledBox0:active {
+    background: #ff3dff;
+}
+
+.clickEnabledBox0:hover,
+.clickEnabledBox0:focus {
+    border: 10px solid #ff00ff;
+    cursor: pointer;
+}
+
+// .box1,
+.coloredBox1,
+.clickEnabledBox1:active {
+    background: #ff3939;
+}
+
+.clickEnabledBox1:hover,
+.clickEnabledBox1:focus {
+    border: 10px solid #ff3939;
+    cursor: pointer;
+}
+
+// .box2,
+.coloredBox2,
+.clickEnabledBox2:active {
+    background: #ff771b;
+}
+
+.clickEnabledBox2:hover,
+.clickEnabledBox2:focus {
+    border: 10px solid #ff771b;
+    cursor: pointer;
+}
+
+// .box3,
+.coloredBox3,
+.clickEnabledBox3:active {
+    background: #ffee00;
+}
+
+.clickEnabledBox3:hover,
+.clickEnabledBox3:focus {
+    border: 10px solid #ffee00;
+    cursor: pointer;
+}
+
+// .box4,
+.coloredBox4,
+.clickEnabledBox4:active {
+    background: #00ff00;
+}
+
+.clickEnabledBox4:hover,
+.clickEnabledBox4:focus {
+    border: 10px solid #00ff00;
+    cursor: pointer;
+}
+
+// .box5,
+.coloredBox5,
+.clickEnabledBox5:active {
+    background: #0099ff;
+}
+
+.clickEnabledBox5:hover,
+.clickEnabledBox5:focus {
+    border: 10px solid #0099ff;
+    cursor: pointer;
+}
+
+
+// .box6,
+.coloredBox6,
+.clickEnabledBox6:active {
+    background: #4a3dff;
+}
+
+.clickEnabledBox6:hover,
+.clickEnabledBox6:focus {
+    border: 10px solid #4a3dff;
+    cursor: pointer;
+}
+
+// .box7,
+.coloredBox7,
+.clickEnabledBox7:active {
+    background: #ad33ff;
+}
+
+.clickEnabledBox7:hover,
+.clickEnabledBox7:focus {
+    border: 10px solid #ad33ff;
+    cursor: pointer;
+}

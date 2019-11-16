@@ -146,7 +146,7 @@ simonGame.compareSequences = function() {
                 // remove overlay message \
                 $('.overlayMessageContainer').addClass('displayNone');
                 simonGame.playSequence();
-            }, 800);
+            }, 1500);
             return false;
         } else if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 0) {
             // option2: if user already used their second chance
@@ -170,6 +170,7 @@ simonGame.compareSequences = function() {
     } // end of for loop
 
     // option3: if the two sequences match
+
     // show overlay / disallow clicking
     $('.overlay').removeClass('displayNone'); 
     // show overlay message to user
@@ -189,8 +190,9 @@ simonGame.compareSequences = function() {
 // high score counter - will reset if window refreshes <<<<<<<<<<<<<<<<<<<<<<<<<
 simonGame.countHighScore = function() {
     simonGame.highScore = simonGame.sequenceLength;
-    //  NEED IF STATEMENT HERE???
+    //  NEED IF STATEMENT HERE??? <<<<<<<<<<<<<<<<<<
     localStorage.setItem(simonGame.highScore, simonGame.highscore);
+    // ^^^^^^^^^^^^^^ DEAL WITH THIS
     $('.highScore').text(`Your longest sequence is: ${simonGame.highScore}`);
     console.log("logging sequence length");
     console.log("logging localStorage:", localStorage[simonGame.highScore]);
@@ -204,8 +206,6 @@ simonGame.resetGame = function() {
     simonGame.userSequence = []; 
     simonGame.userClicks = 0;
     simonGame.chances = 2;
-    // hide OVERLAY
-    // $('.overlay').addClass('displayNone');
 }
 
 // click 'start' button
@@ -217,8 +217,7 @@ $('button').on('click', function() {
     console.log("checking if localstorage is saving: ", localStorage[simonGame.highScore]);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
-    // show overlay
-    // $('.overlay').removeClass('displayNone');
+    // show overlay message
     $('.overlayMessageContainer').removeClass('displayNone');
     $('.overlayMessage').text('Watch the sequence carefully!');
     
@@ -227,8 +226,6 @@ $('button').on('click', function() {
     
     setTimeout(function() {
         $('.overlayMessageContainer').addClass('displayNone');
-        // $('.overlayMessage').addClass('displayNone');
-        // may not need this
         simonGame.makeSequence();
         simonGame.playSequence();
     }, 800)
