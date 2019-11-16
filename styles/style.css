@@ -13,6 +13,18 @@ body {
   background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
 }
 
+@media (max-width: 480px) {
+  body {
+    font-size: calc(1.8rem + 0.5vw);
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    font-size: 1.8rem;
+  }
+}
+
 p {
   line-height: 1.3;
 }
@@ -24,6 +36,18 @@ header {
 main {
   width: 700px;
   margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  main {
+    width: calc(610px);
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 95%;
+  }
 }
 
 h1,
@@ -42,9 +66,21 @@ h1 {
   font-size: 4rem;
 }
 
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.7rem;
+  }
+}
+
 h2 {
   margin: 5px 0;
   font-size: 3rem;
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 2.4rem;
+  }
 }
 
 h3 {
@@ -70,11 +106,6 @@ i {
 
 a {
   color: inherit;
-}
-
-.buttonContainer {
-  height: 44px;
-  border: 1px dashed lime;
 }
 
 button {
@@ -105,12 +136,27 @@ button:hover, button:focus {
           justify-content: center;
 }
 
+.displayNone {
+  display: none;
+}
+
+.buttonContainer {
+  height: 44px;
+  border: 1px dashed lime;
+}
+
 .gameContainer {
   max-height: 95vh;
   width: 800px;
   padding: 20px 20px 0;
   margin: 0 auto;
   background: #fff;
+}
+
+@media (max-width: 480px) {
+  .gameContainer {
+    padding: 5px 5px 0;
+  }
 }
 
 .gameGrid {
@@ -127,6 +173,34 @@ button:hover, button:focus {
           justify-content: center;
   position: relative;
   border: 1px solid crimson;
+}
+
+@media (max-width: 767px) {
+  .gameGrid {
+    -ms-grid-columns: (130px)[4];
+        grid-template-columns: repeat(4, 130px);
+    -ms-grid-rows: (130px)[2];
+        grid-template-rows: repeat(2, 130px);
+  }
+}
+
+@media (max-width: 680px) {
+  .gameGrid {
+    -ms-grid-columns: (100px)[4];
+        grid-template-columns: repeat(4, 100px);
+    -ms-grid-rows: (100px)[2];
+        grid-template-rows: repeat(2, 100px);
+    margin: 10px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gameGrid {
+    -ms-grid-columns: (80px)[2];
+        grid-template-columns: repeat(2, 80px);
+    -ms-grid-rows: (80px)[4];
+        grid-template-rows: repeat(4, 80px);
+  }
 }
 
 .overlay,
@@ -146,7 +220,7 @@ button:hover, button:focus {
 }
 
 .overlayMessage {
-  background: white;
+  background: #fff;
   padding: 30px;
   margin: 0;
 }
@@ -154,6 +228,12 @@ button:hover, button:focus {
 .instructions {
   padding: 30px 0;
   background: #fff;
+}
+
+@media (max-width: 480px) {
+  .instructions {
+    padding: 10px;
+  }
 }
 
 .instructions p {
@@ -167,17 +247,18 @@ button:hover, button:focus {
   margin-top: 8px;
 }
 
-.box {
-  background: black;
+@media (max-width: 480px) {
+  .instructions p {
+    width: 85%;
+  }
 }
 
-.displayNone {
-  display: none;
+.box {
+  background: #000;
 }
 
 .highScoreContainer {
   height: 30px;
-  border: 1px solid deepskyblue;
 }
 
 .highScoreContainer p {
@@ -189,92 +270,10 @@ footer p {
   margin-bottom: 3px;
 }
 
-.coloredBox0,
-.clickEnabledBox0:active {
-  background: #ff00ff;
-}
-
-.clickEnabledBox0:hover,
-.clickEnabledBox0:focus {
-  border: 5px solid #ff00ff;
-  cursor: pointer;
-}
-
-.coloredBox1,
-.clickEnabledBox1:active {
-  background: #ff0000;
-}
-
-.clickEnabledBox1:hover,
-.clickEnabledBox1:focus {
-  border: 5px solid #ff0000;
-  cursor: pointer;
-}
-
-.coloredBox2,
-.clickEnabledBox2:active {
-  background: #ff6600;
-}
-
-.clickEnabledBox2:hover,
-.clickEnabledBox2:focus {
-  border: 5px solid #ff6600;
-  cursor: pointer;
-}
-
-.coloredBox3,
-.clickEnabledBox3:active {
-  background: #ffee00;
-}
-
-.clickEnabledBox3:hover,
-.clickEnabledBox3:focus {
-  border: 5px solid #ffee00;
-  cursor: pointer;
-}
-
-.coloredBox4,
-.clickEnabledBox4:active {
-  background: #00ff00;
-}
-
-.clickEnabledBox4:hover,
-.clickEnabledBox4:focus {
-  border: 5px solid #00ff00;
-  cursor: pointer;
-}
-
-.coloredBox5,
-.clickEnabledBox5:active {
-  background: #0099ff;
-}
-
-.clickEnabledBox5:hover,
-.clickEnabledBox5:focus {
-  border: 5px solid #0099ff;
-  cursor: pointer;
-}
-
-.coloredBox6,
-.clickEnabledBox6:active {
-  background: #4400ff;
-}
-
-.clickEnabledBox6:hover,
-.clickEnabledBox6:focus {
-  border: 5px solid #4400ff;
-  cursor: pointer;
-}
-
-.coloredBox7,
-.clickEnabledBox7:active {
-  background: #9900ff;
-}
-
-.clickEnabledBox7:hover,
-.clickEnabledBox7:focus {
-  border: 5px solid #9900ff;
-  cursor: pointer;
+@media (max-width: 480px) {
+  footer p {
+    margin-top: 5px;
+  }
 }
 
 .coloredBox0,
@@ -363,69 +362,4 @@ footer p {
 .clickEnabledBox7:focus {
   border: 10px solid #ad33ff;
   cursor: pointer;
-}
-
-@media (max-width: 767px) {
-  main {
-    width: calc(610px);
-  }
-  .gameGrid {
-    -ms-grid-columns: (130px)[4];
-        grid-template-columns: repeat(4, 130px);
-    -ms-grid-rows: (130px)[2];
-        grid-template-rows: repeat(2, 130px);
-  }
-}
-
-@media (max-width: 680px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-  .gameGrid {
-    -ms-grid-columns: (100px)[4];
-        grid-template-columns: repeat(4, 100px);
-    -ms-grid-rows: (100px)[2];
-        grid-template-rows: repeat(2, 100px);
-    margin: 10px 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    font-size: calc(1.8rem + 0.5vw);
-  }
-  h1 {
-    font-size: 2.7rem;
-  }
-  h2 {
-    font-size: 2.4rem;
-  }
-  main {
-    width: 95%;
-  }
-  .gameContainer {
-    padding: 5px 5px 0;
-    border: 1px solid crimson;
-  }
-  .gameGrid {
-    -ms-grid-columns: (80px)[2];
-        grid-template-columns: repeat(2, 80px);
-    -ms-grid-rows: (80px)[4];
-        grid-template-rows: repeat(4, 80px);
-  }
-  .instructions {
-    padding: 10px;
-  }
-  .instructions p {
-    width: 85%;
-  }
-  footer p {
-    margin-top: 5px;
-  }
-}
-
-@media (max-width: 320px) {
-  body {
-    font-size: 1.8rem;
-  }
 }

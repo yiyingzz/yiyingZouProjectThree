@@ -1,3 +1,4 @@
+// GLOBAL STYLES ------------------------------------------//
 html {
     font-size: 62.5%;
 }
@@ -10,6 +11,14 @@ body {
     margin: 0;
     text-align: center;
     background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
+
+    @media (max-width: 480px) {
+        font-size: calc(1.8rem + 0.5vw);
+    }
+
+    @media (max-width: 320px) {
+        font-size: 1.8rem;
+    }
 }
 
 p {
@@ -23,6 +32,14 @@ header {
 main {
     width: 700px;
     margin: 0 auto;
+
+    @media (max-width: 767px) {
+        width: calc(610px);
+    }
+
+    @media (max-width: 480px) {
+        width: 95%;
+    }
 }
 
 h1,
@@ -39,11 +56,19 @@ h3 {
 h1 {
     color: #ad33ff;
     font-size: 4rem;
+
+    @media (max-width: 480px) {
+        font-size: 2.7rem;
+    }
 }
 
 h2 {
     margin: 5px 0;
     font-size: 3rem;
+
+    @media (max-width: 480px) {
+        font-size: 2.4rem;
+    }
 }
 
 h3 {
@@ -69,11 +94,6 @@ a {
     color: inherit;
 }
 
-.buttonContainer {
-    height: 44px;
-    border: 1px dashed lime;
-}
-
 button {
     padding: 10px 40px;
     font-size: inherit;
@@ -96,12 +116,28 @@ button {
     justify-content: center;
 }
 
+.displayNone {
+    display: none;
+}
+
+.buttonContainer {
+    height: 44px;
+    border: 1px dashed lime;
+}
+
+
+// GAME BODY STYLES ------------------------------------- //
+
 .gameContainer {
     max-height: 95vh;
     width: 800px;
     padding: 20px 20px 0;
     margin: 0 auto;
     background: #fff;
+
+    @media (max-width: 480px) {
+        padding: 5px 5px 0;
+    }
 }
 
 .gameGrid {
@@ -114,8 +150,25 @@ button {
     position: relative;
 
     border: 1px solid crimson;
+
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(4, 130px);
+        grid-template-rows: repeat(2, 130px);
+    }
+
+    @media (max-width: 680px) {
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(2, 100px);
+        margin: 10px 5px;
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: repeat(2, 80px);
+        grid-template-rows: repeat(4, 80px);
+    }
 }
 
+// GAME INSTRUCTIONS & TEXT STYLES -----------------------------------//
 .overlay,
 .instructions {
     position: absolute;
@@ -134,7 +187,7 @@ button {
 }
 
 .overlayMessage {
-    background: white;
+    background: #fff;
     padding: 30px;
     margin: 0;
 }
@@ -142,6 +195,10 @@ button {
 .instructions {
     padding: 30px 0;
     background: #fff;
+
+    @media (max-width: 480px) {
+        padding: 10px;
+    }
     
     p {
         width: 75%;
@@ -152,37 +209,43 @@ button {
         &:first-of-type {
             margin-top: 8px;
         }
+
+        @media (max-width: 480px) {
+            width: 85%;
+        }
     }
 }
 
 .box {
-    background: black;
-}
-
-.displayNone {
-    display: none;
+    background: #000;
 }
 
 .highScoreContainer {
     height: 30px;
-    border: 1px solid deepskyblue;
+    // border: 1px solid deepskyblue;
 
     p {
         margin: 0 0 5px 0;
     }
 }
 
+
+// FOOTER STYLES ---------------------------------------//
 footer p {
     font-size: 1.6rem;
     margin-bottom: 3px;
+
+    @media (max-width: 480px) {
+        margin-top: 5px;
+    }
 }
 
 
-// TESTING border-radius
+// TESTING border-radius-------
 // .box,
 // .gameContainer,
 // button,
 // .overlayMessageContainer,
 // .overlayMessage {
-//     border-radius: 20px;
+//     border-radius: 15px;
 // }
