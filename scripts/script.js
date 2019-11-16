@@ -82,13 +82,13 @@ simonGame.playSequence = function() {
     })
     
     setTimeout(function() {
-        // show overlay message
-        $('.overlayMessageContainer').removeClass('displayNone');
-        $('.overlayMessage').text(`Now it's your turn!`);
+
+        simonGame.showOverlayMessage(`Now it's your turn!`);
 
         setTimeout(function() {
+            simonGame.hideOverlayMessage();
             // hide overlay message
-            $('.overlayMessageContainer').addClass('displayNone');
+            // $('.overlayMessageContainer').addClass('displayNone');
 
             // hide overlay box to allow clicking
             $('.overlay').addClass('displayNone');
@@ -113,6 +113,15 @@ simonGame.removeClickColors = function() {
     })
 }
 
+simonGame.showOverlayMessage = function(message) {
+    $('.overlayMessageContainer').removeClass('displayNone');
+    $('.overlayMessage').text(message);
+}
+
+simonGame.hideOverlayMessage = function() {
+    $('.overlayMessageContainer').addClass('displayNone');
+}
+
 // function to compare user array to sequence array
 simonGame.compareSequences = function() {
     simonGame.removeClickColors();
@@ -130,9 +139,7 @@ simonGame.compareSequences = function() {
             // show overlay / disallow clicking
             $('.overlay').removeClass('displayNone');
 
-            // show overlay message
-            $('.overlayMessageContainer').removeClass('displayNone');
-            $('.overlayMessage').text(`That was the wrong sequence. You, get one more chance. Watch carefully!`);
+            simonGame.showOverlayMessage(`That was the wrong sequence. You get one more chance!`);
 
             // reset user clicks & sequence
             simonGame.userClicks = 0;
@@ -143,10 +150,9 @@ simonGame.compareSequences = function() {
             
             // give user a slight delay
             setTimeout(function() {
-                // remove overlay message \
-                $('.overlayMessageContainer').addClass('displayNone');
+                simonGame.hideOverlayMessage();
                 simonGame.playSequence();
-            }, 1500);
+            }, 1800);
             return false;
         } else if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 0) {
             // option2: if user already used their second chance
@@ -155,9 +161,7 @@ simonGame.compareSequences = function() {
             // show overlay / disallow clicking
             $('.overlay').removeClass('displayNone');
 
-            // show overlay message
-            $('.overlayMessageContainer').removeClass('displayNone');
-            $('.overlayMessage').text(`That was the wrong sequence. Game over!`);
+            simonGame.showOverlayMessage(`That was the wrong sequence. Game over!`);
             
             setTimeout(function() {
                 simonGame.resetGame();
@@ -172,11 +176,9 @@ simonGame.compareSequences = function() {
     // option3: if the two sequences match
 
     // show overlay / disallow clicking
-    $('.overlay').removeClass('displayNone'); 
-    // show overlay message to user
-    $('.overlayMessageContainer').removeClass('displayNone');
-    $('.overlayMessage').text(`Great Job! You made it to the next round.`);
-
+    $('.overlay').removeClass('displayNone');
+    
+    simonGame.showOverlayMessage(`Great job! You made it to the next round.`);
     simonGame.countHighScore();
 
     setTimeout(function() {
@@ -217,9 +219,7 @@ $('button').on('click', function() {
     console.log("checking if localstorage is saving: ", localStorage[simonGame.highScore]);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
-    // show overlay message
-    $('.overlayMessageContainer').removeClass('displayNone');
-    $('.overlayMessage').text('Watch the sequence carefully!');
+    simonGame.showOverlayMessage(`Watch the sequence carefully!`);
     
     // make button disappear
     $(this).addClass('displayNone');
@@ -249,7 +249,6 @@ $('.gameGrid').on('click', '.clickEnabled', function() {
 
 // click event for instructions
 $('i').on('click', function() {
-    // $('.overlay').toggleClass('displayNone')
     $('.instructions').toggleClass('displayNone');
 })
 
@@ -262,8 +261,7 @@ $(document).ready(function() {
 
 
 // icon aria-label - CHECK THIS <<<<<<<<<<<<<<<<<<<<<
-// styling in general, button, border-radius?, better font for headings, footer styling
-// should box colours be brighter/lighter?
+// styling in general, border-radius?, better font for headings, footer styling
 
 // finish media queries
 // mobile - might need to have the instructions in a link & pop up/slide out from side instead of on page

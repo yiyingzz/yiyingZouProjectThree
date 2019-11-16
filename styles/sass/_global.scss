@@ -3,17 +3,21 @@ html {
 }
 
 body {
+    height: 100vh;
     font-family: 'Rubik', sans-serif;
     font-size: 2rem;
-    height: 100vh;
+    color: #000;
     margin: 0;
     text-align: center;
     background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
 }
 
+p {
+    line-height: 1.3;
+}
+
 header {
     border: 3px dashed lime;
-    // position: relative;
 }
 
 main {
@@ -27,36 +31,54 @@ h3 {
     font-family: 'Quantico', sans-serif;
 }
 
-h1 {
+h1,
+h3 {
     margin: 0;
-    font-weight: 500;
+}
+
+h1 {
     color: #ad33ff;
+    font-size: 4rem;
 }
 
 h2 {
     margin: 5px 0;
+    font-size: 3rem;
+}
 
-    i {
-        cursor: pointer;
-        color: #ad33ff;
-        transition: 0.3s all;
+h3 {
+    font-size: 2.4rem;
+}
 
-        &:hover {
-            color: yellow;
-        }
+i,
+a {
+    cursor: pointer;
+    transition: 0.3s all;
+
+    &:hover,
+    &:focus {
+        color: #0099ff;
     }
 }
 
+i {
+    color: #ad33ff;
+}
+
+a {
+    color: inherit;
+}
+
 .buttonContainer {
-    height: 54px;
+    height: 44px;
     border: 1px dashed lime;
 }
 
 button {
-    padding: 5px 30px;
+    padding: 10px 40px;
     font-size: inherit;
     text-transform: uppercase;
-    border: 5px solid #ad33ff;
+    border: 0;
     background: #ad33ff;
     color: #fff;
     cursor: pointer;
@@ -64,8 +86,7 @@ button {
     
     &:hover,
     &:focus {
-        color: #ad33ff;
-        background: #fff;
+        background: #0099ff;
     }
 }
 
@@ -116,25 +137,21 @@ button {
     background: white;
     padding: 30px;
     margin: 0;
-    // border: 3px solid #9900ff;
 }
 
 .instructions {
-    // width: 100%;
-    // height: 90%;
     padding: 30px 0;
     background: #fff;
-    // border: 2px dashed deeppink;
-
-    h3 {
-        margin-top: 0;
-    }
     
     p {
         width: 75%;
         margin: 20px auto;
         text-align: left;
         z-index: 1;
+
+        &:first-of-type {
+            margin-top: 8px;
+        }
     }
 }
 
