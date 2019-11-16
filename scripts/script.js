@@ -42,13 +42,13 @@ simonGame.boxes = [
         clickColor: 'clickEnabledBox7'
     }
 ];
-// maybe change 'class' to 'clickClass'?????
 
 simonGame.sequenceLength = 3;
 simonGame.sequence = []; 
 simonGame.userSequence = [];
 simonGame.userClicks = 0;
-simonGame.chances = 0;
+simonGame.chances = 2; // user starts off with 2 chances
+
 simonGame.highScore = 0; // maybe change this to longestStreak ><<<<<<<<<<<<<< // ><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 localStorage.setItem(simonGame.highScore, simonGame.highscore); 
 // ^^^^^^^^^^^^ can't use same params, must be key - 'value'
@@ -57,10 +57,7 @@ localStorage.setItem(simonGame.highScore, simonGame.highscore);
 simonGame.makeSequence = function() {
     for (let i = 0; i < simonGame.sequenceLength; i++) {
         const randomNum = Math.floor(Math.random() * simonGame.boxes.length);
-
-        //refactor later or dont ????????????????
         simonGame.sequence.push(randomNum); 
-        console.log('logging from sequencer(): ', randomNum);
     }
     console.log('whole sequence: ', simonGame.sequence);
 };
@@ -88,7 +85,7 @@ simonGame.playSequence = function() {
         // show overlay message
         $('.overlayMessage').removeClass('displayNone').text(`Now it's your turn!`);
         setTimeout(function() {
-            // HIDE overlay box
+            // hide overlay box
             $('.overlay').addClass('displayNone'); 
             // allow clicking on boxes
             $('.box').addClass('clickEnabled');
@@ -103,7 +100,7 @@ simonGame.addClickColors = function() {
     })
 }
 
-// function to disable colour-changin on boxes when clicked
+// function to disable colour-changing on boxes when clicked
 simonGame.removeClickColors = function() {
     simonGame.boxes.forEach(function(item) {
         $(item.box).removeClass(item.clickColor);
@@ -112,51 +109,40 @@ simonGame.removeClickColors = function() {
 
 // function to compare user array to sequence array
 simonGame.compareSequences = function() {
-
     simonGame.removeClickColors();
 
-    // logging the two arrays
+    // logging the two arrays VVVVVVVVVVV (take this out later)
     console.log('sequence:', simonGame.sequence);
     console.log('user sequence: ', simonGame.userSequence);
 
-    simonGame.chances++;
-    console.log(simonGame.chances);
+    simonGame.chances--; // user used up a chance
     
     for (let i = 0; i < simonGame.userSequence.length; i++) {
-        if (simonGame.userSequence[i] === simonGame.sequence[i]) {
-
-            // literally nothing happening here, it's just a check
-            console.log(simonGame.userSequence[i], simonGame.sequence[i]);
-            // so can I just take it out entirely? only run the other ifs?
-            // like if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 1)
-            // else if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 0/2???? )  - thie is GAME OVER
-            /// !!!!!!!!!!!!!!!!!!!!!!!!!!
-            // ASK in bootcamp-help <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-        } else if (simonGame.chances === 1) {
-            // second chance
+        if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 1) {
+            // option1: if user is wrong, give user a second chance
             // show overlay box & message
             $('.overlay').removeClass('displayNone');
             $('.overlayMessage').text(`That was the wrong sequence. You, get one more chance. Watch carefully!`);
+
             // reset user clicks & sequence
             simonGame.userClicks = 0;
             simonGame.userSequence = [];
+
             // toggle off box clicking
             $('.box').removeClass('clickEnabled');
             
             // give user a slight delay
             setTimeout(function() {
-
                 // toggle ON overlay
                 $('.overlayMessage').addClass('displayNone');
                 simonGame.playSequence();
             }, 800);
             return false;
-        } else {
+        } else if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 0) {
+            // option2: if user already used their second chance
             // GAME OVER
 
-            // SHOW overlay
+            // show overlay
             $('.overlay').removeClass('displayNone');
             $('.overlayMessage').text(`That was the wrong sequence. Game over!`);
             
@@ -170,6 +156,7 @@ simonGame.compareSequences = function() {
         }
     } // end of for loop
 
+    // option3: if the two sequences match
     //show overlay
     $('.overlay').removeClass('displayNone'); 
     $('.overlayMessage').text(`Great Job! Continue playing?`);
@@ -201,7 +188,7 @@ simonGame.resetGame = function() {
     simonGame.sequence = [];
     simonGame.userSequence = []; 
     simonGame.userClicks = 0;
-    simonGame.chances = 0;
+    simonGame.chances = 2;
     // hide OVERLAY
     $('.overlay').addClass('displayNone');
 }
@@ -254,18 +241,15 @@ $(document).ready(function() {
 
 
 
-// should I reverse simonGame.chances to count down instead of up?
 // style overlay -maybe add drop-shadow???
 // styling in general, button, hover border should be thicker, border-radius?, better font for headings, footer styling
 // should box colours be brighter/lighter?
 
-
-
-// finishe media queries
+// finish media queries
 // mobile - might need to have the instructions in a link & pop up/slide out from side instead of on page
 
-// refactor my flexboxes - use a class?
+// check localStorage/windowsessionStorage issue
 
 // what to put in my doc ready if I don't need to initialize a function
 
-// code organization / functional programming / clean up code
+// code organization / clean up code
