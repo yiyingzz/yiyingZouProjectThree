@@ -151,14 +151,25 @@ $('.gameGrid').on('click', '.clickEnabled', function() {
 })
 
 simonGame.chances = 0;
+
+// function to enable colour-changing on boxes when clicked
+simonGame.addClickColors = function() {
+    simonGame.boxes.forEach(function(item) {
+        $(item.box).addClass(item.clickColor);
+    })
+}
+
+// function to disable colour-changin on boxes when clicked
+simonGame.removeClickColors = function() {
+    simonGame.boxes.forEach(function(item) {
+        $(item.box).removeClass(item.clickColor);
+    })
+}
     
 // compare user array to sequence array
 simonGame.compareSequences = function() {
 
-    // <<<<<<<<<<<<<<<<< TURN OF CLICK COLOURS HERE?????
-    simonGame.boxes.forEach(function(item) {
-        $(item.box).removeClass(item.clickColor);
-    })
+    simonGame.removeClickColors();
 
     // logging the two arrays
     console.log('sequence:', simonGame.sequence);
@@ -172,6 +183,13 @@ simonGame.compareSequences = function() {
 
             // literally nothing happening here, it's just a check
             console.log(simonGame.userSequence[i], simonGame.sequence[i]);
+            // so can I just take it out entirely? only run the other ifs?
+            // like if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 1)
+            // else if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 0/2???? )  - thie is GAME OVER
+            /// !!!!!!!!!!!!!!!!!!!!!!!!!!
+            // ASK in bootcamp-help <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
         } else if (simonGame.chances === 1) {
             // second chance
             // show overlay box & message
@@ -209,13 +227,13 @@ simonGame.compareSequences = function() {
     } // end of for loop
 
     //SHOW OVERLAY --- BUT WHY IS IT HIDING IT
-    $('.overlay').removeClass('displayNone'); // <<<<<<<<<<< happening too fast
+    $('.overlay').removeClass('displayNone'); 
     $('.overlayMessage').text(`Great Job! Continue playing?`);
 
     simonGame.countHighScore();
 
     setTimeout(function() {
-        simonGame.resetGame(); // <<<<<<<<<<<<<<<<<<<<<<<< happening too fast
+        simonGame.resetGame(); 
         $('button').removeClass('displayNone');
     }, 800)
 } 
@@ -246,18 +264,21 @@ $(document).ready(function() {
 });
 
 
-// Due to the delay, user has to wait for the message to change to "Now it's your turn!" before clicking, otherwise it won't work 
-    // make an overlay with 3..2..1.. countdown that grays out squares & goes on top of the boxes
-// DEAL WITH CLICK-ENABLING
-//a reversed click-enabled class
+// NEED TO DISABLE/RE-ENABLE CLICKING UPON GETTING A SECOND CHANCE
+// "NOW it's your turn" doesn't seem to show up on second chance
+// should I reverse simonGame.chances to count down instead of up?
+// style overlay -maybe add drop-shadow???
+// styling in general, button, hover border should be thicker, border-radius?, better font for headings, footer styling
+// should box colours be brighter/lighter?
+// change button to say "continue" upon succesful round?
 
-// DESIGN/UI - ask Fatima
 
-// grid & flexbox used together - ask Helpcue
-// refactor my flexboxes 
+
+// finishe media queries
+// mobile - might need to have the instructions in a link & pop up/slide out from side instead of on page
+
+// refactor my flexboxes - use a class?
 
 // what to put in my doc ready if I don't need to initialize a function
-
-// is my sass ok? literally 1 scss file, not even a partial - maybe use a partial for box colours
 
 // code organization / functional programming / clean up code
