@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Yiying Yells</title>
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/31c9dfb07b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="flexContainer">
@@ -13,11 +14,10 @@
     <div class="gameContainer">
         <header>
             <h1>Yiying Yells <span>(Gently)</span></h1>
-            <h2>A Simon Says Game</h2>
+            <h2>A Simon Says Game <i class="fas fa-info-circle" aria-label="Toggle instructions."></i></h2>
         </header>
 
         <main>
-            <div class="instructions">Watch carefully as the squares will light up in a sequence. When it's your turn, click the squares in the same order.</div>
     
             <div class="gameGrid">
                 <div class="box box0"></div>
@@ -28,11 +28,20 @@
                 <div class="box box5"></div>
                 <div class="box box6"></div>
                 <div class="box box7"></div>
-                <div class="overlay flexContainer displayNone">
-                    <div class="overlayMessage">
+                <div class="overlay flexContainer">
+                    <div class="overlayMessageContainer displayNone">
+                        <p class="overlayMessage">
+                        </p>
                         <!-- messages to user goes here -->
                     </div>
                 </div>
+                <div class="instructions">
+                        <h3>Instructions</h3>
+                        <p>Watch carefully as the squares light up in a random sequence.</p>
+                        <p>When it's your turn, click the squares in the same order.</p>
+                        <p>If you get it right, you'll go on to the next round and one more square will be added to the sequence.</p>
+                        <p>If you get it wrong, you'll get one more try. Good luck!</p>
+                    </div>
             </div>
             
             <div class="highScore">

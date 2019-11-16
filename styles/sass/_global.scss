@@ -11,6 +11,11 @@ body {
     background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
 }
 
+header {
+    border: 3px dashed lime;
+    // position: relative;
+}
+
 main {
     width: 700px;
     margin: 0 auto;
@@ -24,6 +29,10 @@ h1 {
 
 h2 {
     margin: 10px 0;
+
+    i {
+        cursor: pointer;
+    }
 }
 
 .buttonContainer {
@@ -38,6 +47,7 @@ button {
     border: 0;
     color: white;
     background: #9900ff;
+    cursor: pointer;
     transition: 0.3s all;
 }
 
@@ -70,7 +80,8 @@ button:focus {
     position: relative;
 }
 
-.overlay {
+.overlay,
+.instructions {
     position: absolute;
     top: 0;
     left: 0;
@@ -78,10 +89,38 @@ button:focus {
     right: 0;
 }
 
+
+.overlayMessageContainer {
+    width: 50%;
+    background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
+    padding: 10px;
+    
+}
+
 .overlayMessage {
     background: white;
-    width: 50%;
     padding: 30px 0;
+    margin: 0;
+    // border: 3px solid #9900ff;
+}
+
+.instructions {
+    // width: 100%;
+    // height: 90%;
+    padding: 30px 0;
+    background: #fff;
+    // border: 2px dashed deeppink;
+
+    h3 {
+        margin-top: 0;
+    }
+    
+    p {
+        width: 75%;
+        margin: 20px auto;
+        text-align: left;
+        z-index: 1;
+    }
 }
 
 .box {

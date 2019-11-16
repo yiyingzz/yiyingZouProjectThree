@@ -3,11 +3,13 @@
 .coloredBox0,
 .clickEnabledBox0:active {
     background: #ff00ff;
+
 }
 
 .clickEnabledBox0:hover,
 .clickEnabledBox0:focus {
-    border: 2px solid #ff00ff;
+    border: 5px solid #ff00ff;
+    cursor: pointer;
 }
 
 .coloredBox1,
@@ -17,7 +19,8 @@
 
 .clickEnabledBox1:hover,
 .clickEnabledBox1:focus {
-    border: 3px solid #ff0000;
+    border: 5px solid #ff0000;
+    cursor: pointer;
 }
 
 .coloredBox2,
@@ -27,7 +30,8 @@
 
 .clickEnabledBox2:hover,
 .clickEnabledBox2:focus {
-    border: 3px solid #ff6600;
+    border: 5px solid #ff6600;
+    cursor: pointer;
 }
 
 .coloredBox3,
@@ -37,7 +41,8 @@
 
 .clickEnabledBox3:hover,
 .clickEnabledBox3:focus {
-    border: 3px solid #ffee00;
+    border: 5px solid #ffee00;
+    cursor: pointer;
 }
 
 .coloredBox4,
@@ -47,7 +52,8 @@
 
 .clickEnabledBox4:hover,
 .clickEnabledBox4:focus {
-    border: 3px solid #00ff00;
+    border: 5px solid #00ff00;
+    cursor: pointer;
 }
 
 .coloredBox5,
@@ -57,7 +63,8 @@
 
 .clickEnabledBox5:hover,
 .clickEnabledBox5:focus {
-    border: 3px solid #0099ff;
+    border: 5px solid #0099ff;
+    cursor: pointer;
 }
 
 .coloredBox6,
@@ -67,7 +74,8 @@
 
 .clickEnabledBox6:hover,
 .clickEnabledBox6:focus {
-    border: 3px solid #4400ff;
+    border: 5px solid #4400ff;
+    cursor: pointer;
 }
 
 .coloredBox7,
@@ -77,5 +85,6 @@
 
 .clickEnabledBox7:hover,
 .clickEnabledBox7:focus {
-    border: 3px solid #9900ff;
+    border: 5px solid #9900ff;
+    cursor: pointer;
 }

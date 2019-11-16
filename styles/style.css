@@ -12,6 +12,10 @@ body {
   background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
 }
 
+header {
+  border: 3px dashed lime;
+}
+
 main {
   width: 700px;
   margin: 0 auto;
@@ -27,6 +31,10 @@ h2 {
   margin: 10px 0;
 }
 
+h2 i {
+  cursor: pointer;
+}
+
 .buttonContainer {
   height: 54px;
   border: 1px dashed lime;
@@ -39,6 +47,7 @@ button {
   border: 0;
   color: white;
   background: #9900ff;
+  cursor: pointer;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
@@ -83,7 +92,8 @@ button:focus {
   position: relative;
 }
 
-.overlay {
+.overlay,
+.instructions {
   position: absolute;
   top: 0;
   left: 0;
@@ -91,10 +101,33 @@ button:focus {
   right: 0;
 }
 
+.overlayMessageContainer {
+  width: 50%;
+  background: -webkit-gradient(linear, left top, right bottom, from(palevioletred), color-stop(palegoldenrod), to(skyblue));
+  background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
+  padding: 10px;
+}
+
 .overlayMessage {
   background: white;
-  width: 50%;
   padding: 30px 0;
+  margin: 0;
+}
+
+.instructions {
+  padding: 30px 0;
+  background: #fff;
+}
+
+.instructions h3 {
+  margin-top: 0;
+}
+
+.instructions p {
+  width: 75%;
+  margin: 20px auto;
+  text-align: left;
+  z-index: 1;
 }
 
 .box {
@@ -116,7 +149,8 @@ footer p {
 
 .clickEnabledBox0:hover,
 .clickEnabledBox0:focus {
-  border: 2px solid #ff00ff;
+  border: 5px solid #ff00ff;
+  cursor: pointer;
 }
 
 .coloredBox1,
@@ -126,7 +160,8 @@ footer p {
 
 .clickEnabledBox1:hover,
 .clickEnabledBox1:focus {
-  border: 3px solid #ff0000;
+  border: 5px solid #ff0000;
+  cursor: pointer;
 }
 
 .coloredBox2,
@@ -136,7 +171,8 @@ footer p {
 
 .clickEnabledBox2:hover,
 .clickEnabledBox2:focus {
-  border: 3px solid #ff6600;
+  border: 5px solid #ff6600;
+  cursor: pointer;
 }
 
 .coloredBox3,
@@ -146,7 +182,8 @@ footer p {
 
 .clickEnabledBox3:hover,
 .clickEnabledBox3:focus {
-  border: 3px solid #ffee00;
+  border: 5px solid #ffee00;
+  cursor: pointer;
 }
 
 .coloredBox4,
@@ -156,7 +193,8 @@ footer p {
 
 .clickEnabledBox4:hover,
 .clickEnabledBox4:focus {
-  border: 3px solid #00ff00;
+  border: 5px solid #00ff00;
+  cursor: pointer;
 }
 
 .coloredBox5,
@@ -166,7 +204,8 @@ footer p {
 
 .clickEnabledBox5:hover,
 .clickEnabledBox5:focus {
-  border: 3px solid #0099ff;
+  border: 5px solid #0099ff;
+  cursor: pointer;
 }
 
 .coloredBox6,
@@ -176,7 +215,8 @@ footer p {
 
 .clickEnabledBox6:hover,
 .clickEnabledBox6:focus {
-  border: 3px solid #4400ff;
+  border: 5px solid #4400ff;
+  cursor: pointer;
 }
 
 .coloredBox7,
@@ -186,7 +226,8 @@ footer p {
 
 .clickEnabledBox7:hover,
 .clickEnabledBox7:focus {
-  border: 3px solid #9900ff;
+  border: 5px solid #9900ff;
+  cursor: pointer;
 }
 
 @media (max-width: 767px) {
