@@ -56,7 +56,7 @@ h1 {
     color: #ad33ff;
     font-size: 4rem;
 
-    @media (max-width: 769px) {
+    @media (max-width: 767px) and (orientation: landscape) {
         font-size: 2.8rem;
     }
 
@@ -70,7 +70,7 @@ h2 {
     font-size: 3rem;
     display: inline-block;
 
-    @media (max-width: 769px) {
+    @media (max-width: 767px) and (orientation: landscape) {
         font-size: 2.2rem;
         margin: 0;
     }
@@ -83,7 +83,7 @@ h2 {
 h3 {
     font-size: 2.4rem;
 
-    @media (max-width: 769px) {
+    @media (max-width: 767px) and (orientation: landscape) {
         font-size: 2rem;
     }
 }
@@ -102,6 +102,10 @@ a {
 i {
     color: #ad33ff;
     font-size: 3rem;
+
+    @media (max-width: 767px) and (orientation: landscape) {
+        font-size: 2.2rem;
+    }
 }
 
 a {
@@ -144,11 +148,14 @@ a {
 // GAME BODY STYLES ------------------------------------- //
 
 .gameContainer {
+    // height: auto;
     max-height: 95vh;
     width: 800px;
     padding: 20px 20px;
     margin: 0 auto;
     background: #fff;
+
+    // border: 1px solid crimson;
 
     @media (max-width: 769px) {
         width: 90%;
@@ -163,33 +170,40 @@ a {
 .gameGrid {
     margin: 20px auto;
     display: grid;
-    grid-template-columns: repeat(4, 150px);
-    grid-template-rows: repeat(2, 150px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-gap: 30px;
     justify-content: center;
     position: relative;
 
-    // border: 2px dotted deeppink;
+    border: 2px dotted deeppink;
 
-    @media (max-width: 769px) {
-        // margin: 0;
-        grid-template-columns: repeat(4, 80px);
-        grid-template-rows: repeat(2, 80px);
+    @media (max-width: 767px) {
+        margin: 0;
+        // grid-gap: 10px;
     }
 
     @media (max-width: 480px) {
         margin: 10px 0;
-        grid-template-columns: repeat(2, 80px);
-        grid-template-rows: repeat(4, 80px);
+        height: 70vh;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
         grid-gap: 10px;
     }
 }
 
 .box {
-    width: 150px;
-    height: 150px;
-    border: 0;
     background: #000;
+
+    @media (max-width: 767px) {
+        width: calc(25% - 10px);
+        margin: 0;
+        grid-gap: 10px;
+    }
+}
+
+img {
+    width: 100%;
 }
 
 // GAME INSTRUCTIONS & TEXT STYLES -----------------------------------//
@@ -226,6 +240,10 @@ a {
     height: 100%;
     z-index: 2;
 
+    @media (max-width: 767px) {
+        padding: 10px;
+    }
+
     @media (max-width: 480px) {
         padding: 20px 0;
     }
@@ -240,9 +258,10 @@ a {
             margin-top: 8px;
         }
 
-        @media (max-width: 769px) {
+        @media (max-width: 767px) {
+            margin: 0;
             width: 100%;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             line-height: 1.5;
             margin: 10px auto;
         }
@@ -266,23 +285,10 @@ p.credits {
     p {
         margin: 0 0 5px 0;
 
-        @media (max-width: 767px) {
-            margin-top: 5px;
-            font-size: 1.6rem;
-            line-height: 1.2;
-        }
+        // @media (max-width: 767px) {
+        //     margin-top: 5px;
+        //     font-size: 1.6rem;
+        //     line-height: 1.2;
+        // }
     }
 }
-
-
-// FOOTER STYLES ---------------------------------------//
-
-
-// TESTING border-radius-------
-// .box,
-// .gameContainer,
-// button,
-// .overlayMessageContainer,
-// .overlayMessage {
-//     border-radius: 15px;
-// }

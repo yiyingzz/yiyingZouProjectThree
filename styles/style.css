@@ -295,7 +295,7 @@ h1 {
   font-size: 4rem;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 767px) and (orientation: landscape) {
   h1 {
     font-size: 2.8rem;
   }
@@ -313,7 +313,7 @@ h2 {
   display: inline-block;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 767px) and (orientation: landscape) {
   h2 {
     font-size: 2.2rem;
     margin: 0;
@@ -330,7 +330,7 @@ h3 {
   font-size: 2.4rem;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 767px) and (orientation: landscape) {
   h3 {
     font-size: 2rem;
   }
@@ -352,6 +352,12 @@ a:focus {
 i {
   color: #ad33ff;
   font-size: 3rem;
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+  i {
+    font-size: 2.2rem;
+  }
 }
 
 a {
@@ -421,42 +427,50 @@ a {
   margin: 20px auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (150px)[4];
-      grid-template-columns: repeat(4, 150px);
-  -ms-grid-rows: (150px)[2];
-      grid-template-rows: repeat(2, 150px);
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
   grid-gap: 30px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  border: 2px dotted deeppink;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 767px) {
   .gameGrid {
-    -ms-grid-columns: (80px)[4];
-        grid-template-columns: repeat(4, 80px);
-    -ms-grid-rows: (80px)[2];
-        grid-template-rows: repeat(2, 80px);
+    margin: 0;
   }
 }
 
 @media (max-width: 480px) {
   .gameGrid {
     margin: 10px 0;
-    -ms-grid-columns: (80px)[2];
-        grid-template-columns: repeat(2, 80px);
-    -ms-grid-rows: (80px)[4];
-        grid-template-rows: repeat(4, 80px);
+    height: 70vh;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (1fr)[4];
+        grid-template-rows: repeat(4, 1fr);
     grid-gap: 10px;
   }
 }
 
 .box {
-  width: 150px;
-  height: 150px;
-  border: 0;
   background: #000;
+}
+
+@media (max-width: 767px) {
+  .box {
+    width: calc(25% - 10px);
+    margin: 0;
+    grid-gap: 10px;
+  }
+}
+
+img {
+  width: 100%;
 }
 
 .overlay,
@@ -493,6 +507,12 @@ a {
   z-index: 2;
 }
 
+@media (max-width: 767px) {
+  .instructions {
+    padding: 10px;
+  }
+}
+
 @media (max-width: 480px) {
   .instructions {
     padding: 20px 0;
@@ -510,10 +530,11 @@ a {
   margin-top: 8px;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 767px) {
   .instructions p {
+    margin: 0;
     width: 100%;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     line-height: 1.5;
     margin: 10px auto;
   }
@@ -535,14 +556,6 @@ p.credits {
 
 .highScoreContainer p {
   margin: 0 0 5px 0;
-}
-
-@media (max-width: 767px) {
-  .highScoreContainer p {
-    margin-top: 5px;
-    font-size: 1.6rem;
-    line-height: 1.2;
-  }
 }
 
 .coloredBox0 {

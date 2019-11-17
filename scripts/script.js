@@ -200,19 +200,16 @@ simonGame.init = function() {
     
     // this is where user clicks
     // event to grab clicks and put on userSequence array
-    $('.gameGrid').on('click', '.clickEnabled', function() {
-    
-        // grab the box number using regex
-        const classNames = $(this).attr('class');
-        boxNumber = classNames.match(/[0-9]/);
-        simonGame.userSequence.push(parseInt(boxNumber[0]));
-        console.log("boxNum", boxNumber, boxNumber[0]);
+    $('.gameGrid').on('click keypress', '.clickEnabled', function() {
 
-        $(this).addClass(`${simonGame.boxes[boxNumber[0]].color}`);
+        const boxNum = $(this).data('id');
+        simonGame.userSequence.push(boxNum);
+
+        $(this).addClass(`${simonGame.boxes[boxNum].color}`);
         setTimeout(() => {
-            $(this).removeClass(`${simonGame.boxes[boxNumber[0]].color}`);
+            $(this).removeClass(`${simonGame.boxes[boxNum].color}`);
             console.log($(this));
-        }, 300); // this changes box colours on click
+        }, 200); // this changes box colours on click
     
         simonGame.userClicks++;
         if (simonGame.userClicks >= simonGame.sequenceLength ) {
