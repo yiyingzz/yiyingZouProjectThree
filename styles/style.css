@@ -240,7 +240,7 @@ html {
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   font-family: 'Rubik', sans-serif;
   font-size: 2rem;
   color: #000;
@@ -269,6 +269,7 @@ p {
 main {
   width: 100%;
   margin: 0 auto;
+  border: 1px solid cyan;
   position: relative;
 }
 
@@ -364,8 +365,7 @@ a {
   color: inherit;
 }
 
-.startButton,
-.continueButton {
+button {
   padding: 10px 40px;
   font-size: inherit;
   border: 0;
@@ -376,9 +376,7 @@ a {
   transition: 0.3s all;
 }
 
-.startButton:hover, .startButton:focus,
-.continueButton:hover,
-.continueButton:focus {
+button:hover, button:focus {
   background: #0099ff;
 }
 
@@ -403,7 +401,6 @@ a {
 }
 
 .gameContainer {
-  max-height: 95vh;
   width: 800px;
   padding: 20px 20px;
   margin: 0 auto;
@@ -424,48 +421,28 @@ a {
 }
 
 .gameGrid {
-  margin: 20px auto;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  -ms-grid-rows: (1fr)[2];
-      grid-template-rows: repeat(2, 1fr);
-  grid-gap: 30px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  margin: 20px auto 0;
+  width: 90%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
   position: relative;
   border: 2px dotted deeppink;
 }
 
-@media (max-width: 767px) {
-  .gameGrid {
-    margin: 0;
-  }
+.box {
+  background: #000;
+  width: calc(25% - 20px);
+  margin-bottom: 20px;
 }
 
 @media (max-width: 480px) {
-  .gameGrid {
-    margin: 10px 0;
-    height: 70vh;
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
-    -ms-grid-rows: (1fr)[4];
-        grid-template-rows: repeat(4, 1fr);
-    grid-gap: 10px;
-  }
-}
-
-.box {
-  background: #000;
-}
-
-@media (max-width: 767px) {
   .box {
-    width: calc(25% - 10px);
-    margin: 0;
-    grid-gap: 10px;
+    width: calc(50% - 15px);
   }
 }
 
@@ -487,6 +464,12 @@ img {
   background: -webkit-gradient(linear, left top, right bottom, from(palevioletred), color-stop(palegoldenrod), to(skyblue));
   background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
   padding: 10px;
+}
+
+@media (max-width: 480px) {
+  .overlayMessageContainer {
+    width: 80%;
+  }
 }
 
 .overlayMessageBg {
@@ -552,6 +535,7 @@ p.credits {
 
 .highScoreContainer {
   height: 30px;
+  border: 1px solid deepskyblue;
 }
 
 .highScoreContainer p {

@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Rubik', sans-serif;
     font-size: 2rem;
     color: #000;
@@ -25,14 +25,10 @@ p {
     line-height: 1.3;
 }
 
-header {
-    // border: 3px dashed lime;
-}
-
 main {
     width: 100%;
     margin: 0 auto;
-    // border: 1px solid cyan;
+    border: 1px solid cyan;
     position: relative;
 
     @media (max-width: 480px) {
@@ -112,8 +108,7 @@ a {
     color: inherit;
 }
 
-.startButton,
-.continueButton {
+button {
     padding: 10px 40px;
     font-size: inherit;
     border: 0;
@@ -142,20 +137,14 @@ a {
     display: none;
 }
 
-
-
-
 // GAME BODY STYLES ------------------------------------- //
 
 .gameContainer {
-    // height: auto;
-    max-height: 95vh;
+    // max-height: 95vh;
     width: 800px;
     padding: 20px 20px;
     margin: 0 auto;
     background: #fff;
-
-    // border: 1px solid crimson;
 
     @media (max-width: 769px) {
         width: 90%;
@@ -168,37 +157,38 @@ a {
 }
 
 .gameGrid {
-    margin: 20px auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 30px;
-    justify-content: center;
+    margin: 20px auto 0;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
     position: relative;
 
     border: 2px dotted deeppink;
 
     @media (max-width: 767px) {
-        margin: 0;
-        // grid-gap: 10px;
+
     }
 
     @media (max-width: 480px) {
-        margin: 10px 0;
-        height: 70vh;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        grid-gap: 10px;
+        // margin: 10px 0;
+        // height: 70vh;
     }
 }
 
 .box {
     background: #000;
+    width: calc(25% - 20px);
+    margin-bottom: 20px;
 
     @media (max-width: 767px) {
-        width: calc(25% - 10px);
-        margin: 0;
-        grid-gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+        width: calc(50% - 15px);
+        // width: auto;
+        // height: calc(25% - 20px);
+
     }
 }
 
@@ -216,11 +206,14 @@ img {
     right: 0;
 }
 
-
 .overlayMessageContainer {
     width: 65%;
     background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
     padding: 10px;
+
+    @media (max-width: 480px) {
+        width: 80%;
+    }
 }
 
 .overlayMessageBg {
@@ -280,7 +273,7 @@ p.credits {
 
 .highScoreContainer {
     height: 30px;
-    // border: 1px solid deepskyblue;
+    border: 1px solid deepskyblue;
 
     p {
         margin: 0 0 5px 0;
