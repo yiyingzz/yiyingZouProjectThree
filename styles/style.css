@@ -311,6 +311,12 @@ h1 span {
   font-size: 3.5rem;
 }
 
+@media (max-width: 769px) {
+  h1 span {
+    font-size: 2.4rem;
+  }
+}
+
 h2 {
   margin: 5px 0;
   font-size: 3rem;
@@ -383,10 +389,6 @@ button:hover, button:focus {
   background: #0099ff;
 }
 
-.continueButton {
-  margin-bottom: 0;
-}
-
 .flexContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -404,10 +406,17 @@ button:hover, button:focus {
 }
 
 .gameContainer {
-  width: 800px;
-  padding: 20px 20px;
+  width: 1000px;
+  padding: 30px 30px;
   margin: 0 auto;
   background: #fff;
+}
+
+@media (max-width: 1200px) {
+  .gameContainer {
+    padding: 20px 20px;
+    width: 800px;
+  }
 }
 
 @media (max-width: 769px) {
@@ -425,6 +434,7 @@ button:hover, button:focus {
 
 .gameGrid {
   margin: 20px auto 0;
+  padding: 20px;
   width: 90%;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -438,6 +448,7 @@ button:hover, button:focus {
 
 @media (max-width: 480px) {
   .gameGrid {
+    padding: 0;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -446,7 +457,13 @@ button:hover, button:focus {
 
 .box {
   background: #000;
-  width: calc(25% - 20px);
+  width: calc(25% - 105px / 4);
+}
+
+@media (max-width: 1200px) {
+  .box {
+    width: calc(25% - 60px / 4);
+  }
 }
 
 @media (max-width: 480px) {
@@ -460,7 +477,16 @@ button:hover, button:focus {
 .box1,
 .box2,
 .box3 {
-  margin-bottom: 20px;
+  margin-bottom: 35px;
+}
+
+@media (max-width: 1200px) {
+  .box0,
+  .box1,
+  .box2,
+  .box3 {
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -474,6 +500,20 @@ button:hover, button:focus {
 
 img {
   width: 100%;
+}
+
+.continueButton {
+  margin-bottom: 0;
+}
+
+.startButton {
+  margin-top: 30px;
+}
+
+@media (max-width: 789px) {
+  .startButton {
+    margin-top: 0;
+  }
 }
 
 .overlay,

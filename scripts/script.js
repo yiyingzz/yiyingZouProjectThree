@@ -68,7 +68,6 @@ simonGame.makeSequence = function() {
         const randomNum = Math.floor(Math.random() * simonGame.boxes.length);
         simonGame.sequence.push(randomNum); 
     }
-    console.log('whole sequence: ', simonGame.sequence);
 };
 
 // function to run the sequence on the html page
@@ -76,7 +75,6 @@ simonGame.playSequence = function() {
     simonGame.sequence.forEach(function(item, i) {
         const boxNum = simonGame.boxes[item].box;
         const boxColor = simonGame.boxes[item].color;
-        console.log(boxNum, boxColor);
         
         // boxes 'light up'
         setTimeout(function() {            
@@ -123,10 +121,6 @@ simonGame.hideOverlayMessage = function() {
 
 // function to compare user array to sequence array
 simonGame.compareSequences = function() {
-
-    console.log('sequence:', simonGame.sequence);
-    console.log('userSequence:', simonGame.userSequence);
-
     simonGame.removeClickColors();
     simonGame.chances--; // user used up a chance
     
@@ -145,7 +139,7 @@ simonGame.compareSequences = function() {
             setTimeout(function() {
                 simonGame.hideOverlayMessage();
                 simonGame.playSequence();
-            }, 1800);
+            }, 1800); 
             return false;
         } else if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 0) {
             // option 2: if user is wrong & already used their second chance
@@ -208,7 +202,6 @@ simonGame.init = function() {
         $(this).addClass(`${simonGame.boxes[boxNum].color}`);
         setTimeout(() => {
             $(this).removeClass(`${simonGame.boxes[boxNum].color}`);
-            console.log($(this));
         }, 200); // this changes box colours on click
     
         simonGame.userClicks++;
@@ -217,7 +210,7 @@ simonGame.init = function() {
         };
     })
     
-    // click event for instructions
+    // click event for toggling instructions
     $('i').on('click keypress', function() {
         $('.instructions').toggleClass('displayNone');
     })
@@ -226,6 +219,3 @@ simonGame.init = function() {
 $(document).ready(function() {
     simonGame.init();
 });
-
-
-// finish media queries !!!!!!!!!!!!!!!!

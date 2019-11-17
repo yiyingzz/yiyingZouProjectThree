@@ -61,6 +61,10 @@ h1 {
 
     span {
         font-size: 3.5rem;
+
+        @media (max-width: 769px) {
+            font-size: 2.4rem;
+        }
     }
 }
 
@@ -126,10 +130,6 @@ button {
     }
 }
 
-.continueButton {
-    margin-bottom: 0;
-}
-
 .flexContainer {
     display: flex;
     align-items: center;
@@ -143,10 +143,15 @@ button {
 // GAME BODY STYLES ------------------------------------- //
 
 .gameContainer {
-    width: 800px;
-    padding: 20px 20px;
+    width: 1000px;
+    padding: 30px 30px;
     margin: 0 auto;
     background: #fff;
+
+    @media (max-width: 1200px) {
+        padding: 20px 20px;
+        width: 800px;
+    }
 
     @media (max-width: 769px) {
         width: 90%;
@@ -161,6 +166,7 @@ button {
 
 .gameGrid {
     margin: 20px auto 0;
+    padding: 20px;
     width: 90%;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -168,13 +174,18 @@ button {
     position: relative;
 
     @media (max-width: 480px) {
+        padding: 0;
         justify-content: center;
     }
 }
 
 .box {
     background: #000;
-    width: calc(25% - 20px);
+    width: calc(25% - 105px / 4);
+
+    @media (max-width: 1200px) {
+        width: calc(25% - 60px / 4);
+    }
 
     @media (max-width: 480px) {
         width: calc(40% - 15px);
@@ -186,7 +197,11 @@ button {
 .box1,
 .box2,
 .box3 {
-    margin-bottom: 20px;
+    margin-bottom: 35px;
+
+    @media (max-width: 1200px) {
+        margin-bottom: 20px;
+    }
 
     @media (max-width: 480px) {
         margin-bottom: 10px;
@@ -195,6 +210,18 @@ button {
 
 img {
     width: 100%;
+}
+
+.continueButton {
+    margin-bottom: 0;
+}
+
+.startButton {
+    margin-top: 30px;
+
+    @media (max-width: 789px) {
+        margin-top: 0;
+    }
 }
 
 // GAME INSTRUCTIONS & TEXT STYLES -----------------------------------//
