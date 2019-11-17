@@ -282,7 +282,6 @@ h1,
 h2,
 h3,
 button {
-  font-family: 'Bungee', cursive;
   font-family: 'Quantico', sans-serif;
 }
 
@@ -311,6 +310,7 @@ h1 {
 h2 {
   margin: 5px 0;
   font-size: 3rem;
+  display: inline-block;
 }
 
 @media (max-width: 769px) {
@@ -351,6 +351,7 @@ a:focus {
 
 i {
   color: #ad33ff;
+  font-size: 3rem;
 }
 
 a {
@@ -372,12 +373,8 @@ button:hover, button:focus {
   background: #0099ff;
 }
 
-.actionButton {
+.continueButton {
   margin-bottom: 0;
-}
-
-.startButtonContainer {
-  height: 44px;
 }
 
 .flexContainer {
@@ -452,6 +449,10 @@ button:hover, button:focus {
   }
 }
 
+.box {
+  background: #000;
+}
+
 .overlay,
 .instructions {
   position: absolute;
@@ -483,6 +484,7 @@ button:hover, button:focus {
   padding: 20px 30px 0;
   background: #fff;
   height: 100%;
+  z-index: 2;
 }
 
 @media (max-width: 480px) {
@@ -519,10 +521,6 @@ p.credits {
   position: absolute;
   bottom: 0;
   left: 0;
-}
-
-.box {
-  background: #000;
 }
 
 .highScoreContainer {

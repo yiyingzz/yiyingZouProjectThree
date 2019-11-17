@@ -44,7 +44,6 @@ h1,
 h2,
 h3,
 button {
-    font-family: 'Bungee', cursive;
     font-family: 'Quantico', sans-serif;
 }
 
@@ -69,6 +68,7 @@ h1 {
 h2 {
     margin: 5px 0;
     font-size: 3rem;
+    display: inline-block;
 
     @media (max-width: 769px) {
         font-size: 2.2rem;
@@ -101,6 +101,7 @@ a {
 
 i {
     color: #ad33ff;
+    font-size: 3rem;
 }
 
 a {
@@ -110,7 +111,6 @@ a {
 button {
     padding: 10px 40px;
     font-size: inherit;
-    // text-transform: uppercase;
     border: 0;
     background: #ad33ff;
     color: #fff;
@@ -123,13 +123,8 @@ button {
     }
 }
 
-.actionButton {
+.continueButton {
     margin-bottom: 0;
-}
-
-.startButtonContainer {
-    height: 44px;
-    // border: 1px dashed lime;
 }
 
 .flexContainer {
@@ -189,6 +184,10 @@ button {
     }
 }
 
+.box {
+    background: #000;
+}
+
 // GAME INSTRUCTIONS & TEXT STYLES -----------------------------------//
 .overlay,
 .instructions {
@@ -221,8 +220,7 @@ button {
     padding: 20px 30px 0;
     background: #fff;
     height: 100%;
-
-    // border: 1px solid crimson;
+    z-index: 2;
 
     @media (max-width: 480px) {
         padding: 20px 0;
@@ -256,10 +254,6 @@ p.credits {
     position: absolute;
     bottom: 0;
     left: 0;
-}
-
-.box {
-    background: #000;
 }
 
 .highScoreContainer {

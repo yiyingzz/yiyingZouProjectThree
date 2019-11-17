@@ -48,22 +48,13 @@ simonGame.sequence = [];
 simonGame.userSequence = [];
 simonGame.userClicks = 0;
 simonGame.chances = 2; // user starts off with 2 chances
+simonGame.highScore = 0;
 
-simonGame.highScore = 0; // maybe change this to longestStreak ><<<<<<<<<<<<<< // ><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-localStorage.setItem(simonGame.highScore, simonGame.highscore); 
-// ^^^^^^^^^^^^ can't use same params, must be key - 'value'
-
+// METHODS -------------------------------------------//
 // function to start game/new round
 simonGame.startNewRound = function() {
-    $('.instructions').addClass('displayNone');
-    
-    // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-    console.log("checking if localstorage is saving: ", localStorage[simonGame.highScore]);
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
+    $('.instructions').addClass('displayNone');   
     simonGame.showOverlayMessage(`Watch the sequence carefully!`);
-
-    
     setTimeout(function() {
         $('.overlayMessageContainer').addClass('displayNone');
         simonGame.makeSequence();
@@ -86,32 +77,21 @@ simonGame.playSequence = function() {
         const boxNum = simonGame.boxes[item].box;
         const boxColor = simonGame.boxes[item].color;
         
+        // boxes 'light up'
         setTimeout(function() {            
-            // make sequence boxes show their color (toggle colour ON)
-            $(boxNum).addClass(boxColor);
-            
+            $(boxNum).addClass(boxColor);           
             setTimeout(function() {            
-                // boxes go back to black (toggle colour OFF)
                 $(boxNum).removeClass(boxColor);
             }, 800);
         }, i * 1600);
-
-        simonGame.addClickColors();
+        simonGame.addClickColors(); // adding colours for when user clicks
     })
     
     setTimeout(function() {
-
         simonGame.showOverlayMessage(`Now it's your turn!`);
-
         setTimeout(function() {
             simonGame.hideOverlayMessage();
-            // hide overlay message
-            // $('.overlayMessageContainer').addClass('displayNone');
-
-            // hide overlay box to allow clicking
-            $('.overlay').addClass('displayNone');
-
-            // allow clicking on boxes
+            $('.overlay').addClass('displayNone'); // hide overlay to allow clicking
             $('.box').addClass('clickEnabled');
         }, 800)
     }, 1600 * simonGame.sequence.length);
@@ -143,82 +123,50 @@ simonGame.hideOverlayMessage = function() {
 // function to compare user array to sequence array
 simonGame.compareSequences = function() {
     simonGame.removeClickColors();
-
-    // logging the two arrays VVVVVVVVVVV (take this out later)
-    console.log('sequence:', simonGame.sequence);
-    console.log('user sequence: ', simonGame.userSequence);
-
     simonGame.chances--; // user used up a chance
     
     for (let i = 0; i < simonGame.userSequence.length; i++) {
         if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 1) {
-            // option1: if user is wrong, give user a second chance
+            // option 1: if user is wrong, give user a second chance
 
             // show overlay / disallow clicking
             $('.overlay').removeClass('displayNone');
-
-            simonGame.showOverlayMessage(`That was the wrong sequence. You get one more chance!`);
-
-            // reset user clicks & sequence
-            simonGame.userClicks = 0;
+            simonGame.showOverlayMessage(`That was the wrong sequence. You get one more chance!`);      
+            simonGame.userClicks = 0; // reset user clicks & sequence
             simonGame.userSequence = [];
-
-            // toggle off box clicking
             $('.box').removeClass('clickEnabled');
             
-            // give user a slight delay
+            // give user a slight delay so they can read the message
             setTimeout(function() {
                 simonGame.hideOverlayMessage();
                 simonGame.playSequence();
             }, 1800);
             return false;
         } else if (simonGame.userSequence[i] !== simonGame.sequence[i] && simonGame.chances === 0) {
-            // option2: if user already used their second chance
+            // option 2: if user is wrong & already used their second chance
             // GAME OVER
-
-            // show overlay / disallow clicking
-            $('.overlay').removeClass('displayNone');
-
+            $('.overlay').removeClass('displayNone'); // show overlay / disallow clicking
             simonGame.showOverlayMessage(`That was the wrong sequence. Game over!`);
-            $('.actionButton').text('Play again?').removeClass('displayNone');
+            $('.continueButton').text('Play again?').removeClass('displayNone');
             simonGame.resetGame();
-            
-            // setTimeout(function() {
-            // }, 800)
-
-            simonGame.sequenceLength = 3;
+            simonGame.sequenceLength = 3; // reset sequence length
             return false;
         }
     } // end of for loop
 
-    // option3: if the two sequences match
-
-    // show overlay / disallow clicking
-    $('.overlay').removeClass('displayNone');
-    
+    // option 3: if the two sequences match
+    $('.overlay').removeClass('displayNone'); // show overlay / disallow clicking
     simonGame.showOverlayMessage(`Great job! You made it to the next round.`);
     simonGame.countHighScore();
-
     simonGame.resetGame(); 
-        $('.actionButton').removeClass('displayNone').text('Continue');
-    // setTimeout(function() {
-    //     simonGame.resetGame(); 
-    //     $('.actionButton').removeClass('displayNone').text('Continue');
-    // }, 800)
+    $('.continueButton').removeClass('displayNone').text('Continue');
 } 
 
-// VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-// vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-// high score counter - will reset if window refreshes <<<<<<<<<<<<<<<<<<<<<<<<<
+// high score counter - will reset if window refreshes
 simonGame.countHighScore = function() {
     simonGame.highScore = simonGame.sequenceLength;
-    //  NEED IF STATEMENT HERE??? <<<<<<<<<<<<<<<<<<
-    localStorage.setItem(simonGame.highScore, simonGame.highscore);
-    // ^^^^^^^^^^^^^^ DEAL WITH THIS
     $('.highScore').text(`Your longest sequence is: ${simonGame.highScore}`);
-    console.log("logging sequence length");
-    console.log("logging localStorage:", localStorage[simonGame.highScore]);
-    simonGame.sequenceLength++;
+    simonGame.sequenceLength++; // add one more for next round
 }
 
 // reset game for starting a new game/round, doesn't reset high score
@@ -230,58 +178,46 @@ simonGame.resetGame = function() {
     simonGame.chances = 2;
 }
 
-// click 'start' button
-$('.startButton').on('click', function() {
-    $(this).addClass('displayNone');
-    $('i').removeClass('displayNone');
-    simonGame.startNewRound();
-});
+simonGame.init = function() {
+    // EVENT HANDLERS -----------------------------------------//
+    // click 'start' button
+    $('.startButton').on('click keypress', function() {
+        $(this).addClass('displayNone');
+        $('i').removeClass('displayNone');
+        simonGame.startNewRound();
+    });
+    
+    // 'continue' & 'play again' buttons
+    $('.continueButton').on('click keypress', function() {
+        $(this).addClass('displayNone');
+        simonGame.startNewRound();
+    });
+    
+    // this is where user clicks
+    // event to grab clicks and put on userSequence array
+    $('.gameGrid').on('click keypress', '.clickEnabled', function() {
+        console.log("logging user clicks", $(this));
+    
+        // grab the box number using regex
+        const classNames = $(this).attr('class');
+        boxNumber = classNames.match(/[0-9]/);
+        simonGame.userSequence.push(parseInt(boxNumber[0]));
+    
+        simonGame.userClicks++;
+        if (simonGame.userClicks >= simonGame.sequenceLength ) {
+            simonGame.compareSequences();
+        };
+    })
+    
+    // click event for instructions
+    $('i').on('click keypress', function() {
+        $('.instructions').toggleClass('displayNone');
+    })
+}
 
-// 'continue' & 'play again' buttons
-$('.actionButton').on('click', function() {
-    // make button disappear
-    $(this).addClass('displayNone');
-    simonGame.startNewRound();
-});
-
-
-// this is where user clicks
-// event to grab clicks and put on userSequence array
-$('.gameGrid').on('click', '.clickEnabled', function() {
-    console.log("logging user clicks", $(this));
-
-    // grab the box number using regex
-    const classNames = $(this).attr('class');
-    boxNumber = classNames.match(/[0-9]/);
-    simonGame.userSequence.push(parseInt(boxNumber[0]));
-
-    simonGame.userClicks++;
-    if (simonGame.userClicks >= simonGame.sequenceLength ) {
-        simonGame.compareSequences();
-    };
-})
-
-// click event for instructions
-$('i').on('click', function() {
-    $('.instructions').toggleClass('displayNone');
-})
-
-
-// DEAL WITH THISSSSSS !!!!!!!!!!!!!
-// document ready - not sure what to put in here, maybe event handlers?
 $(document).ready(function() {
-
+    simonGame.init();
 });
 
 
-// icon aria-label - CHECK THIS <<<<<<<<<<<<<<<<<<<<<
-// styling in general, border-radius?, better font for headings, footer styling
-
-// finish media queries
-// mobile - might need to have the instructions in a link & pop up/slide out from side instead of on page
-
-// check localStorage/windowsessionStorage issue
-
-// !!!! what to put in my doc ready if I don't need to initialize a function
-
-// code organization / clean up code
+// finish media queries !!!!!!!!!!!!!!!!

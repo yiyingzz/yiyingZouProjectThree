@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yiying Yells</title>
-    <link href="https://fonts.googleapis.com/css?family=Bungee|Quantico:700|Rubik&display=swap" rel="stylesheet"> 
+    <title>Yiying Yells (Gently)</title>
+    <link href="https://fonts.googleapis.com/css?family=Quantico:700|Rubik&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/31c9dfb07b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -14,31 +14,10 @@
     <div class="gameContainer">
         <header>
             <h1>Yiying Yells <span>(Gently)</span></h1>
-            <h2>A Simon Says Game <i class="fas fa-info-circle displayNone" aria-label="Toggle instructions."></i></h2>
+            <h2>A Simon Says Game</h2> <i class="fas fa-info-circle displayNone" tabindex="0" aria-hidden></i><span class="visuallyHidden">Click to toggle instructions.</span>
         </header>
 
         <main>
-    
-            <div class="gameGrid">
-                <div class="box box0"></div>
-                <div class="box box1"></div>
-                <div class="box box2"></div>
-                <div class="box box3"></div>
-                <div class="box box4"></div>
-                <div class="box box5"></div>
-                <div class="box box6"></div>
-                <div class="box box7"></div>
-                <div class="overlay flexContainer">
-                    <div class="overlayMessageContainer displayNone">
-                        <div class="overlayMessageBg">
-                            <p class="overlayMessage">
-                                <!-- messages to user goes here -->
-                            </p>
-                            <button class="actionButton displayNone">Continue</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="instructions">
                 <h3>Instructions</h3>
                 <p>Watch carefully as the squares light up in a random sequence.</p>
@@ -46,11 +25,31 @@
                 <p>If you get it right, you'll go on to the next round and one more square will be added to the sequence.</p>
                 <p>If you get it wrong, you'll get one more try. Good luck!</p>
                 
-                <div class="startButtonContainer">
-                    <button class="startButton">Start</button>
-                </div>
+                <button class="startButton">Start</button>
                 <p class="credits">Made by <a href="https://yiying.ca">Yiying Zou</a></p>
             </div>
+            
+            <div class="gameGrid">
+                <div class="box box0" tabindex="0"></div>
+                <div class="box box1" tabindex="0"></div>
+                <div class="box box2" tabindex="0"></div>
+                <div class="box box3" tabindex="0"></div>
+                <div class="box box4" tabindex="0"></div>
+                <div class="box box5" tabindex="0"></div>
+                <div class="box box6" tabindex="0"></div>
+                <div class="box box7" tabindex="0"></div>
+                <div class="overlay flexContainer">
+                    <div class="overlayMessageContainer displayNone">
+                        <div class="overlayMessageBg">
+                            <p class="overlayMessage">
+                                <!-- messages to user goes here -->
+                            </p>
+                            <button class="continueButton displayNone">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             
             <div class="highScoreContainer">
                 <p class="highScore">
