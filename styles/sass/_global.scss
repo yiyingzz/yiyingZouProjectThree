@@ -28,7 +28,6 @@ p {
 main {
     width: 100%;
     margin: 0 auto;
-    border: 1px solid cyan;
     position: relative;
 
     @media (max-width: 480px) {
@@ -52,12 +51,16 @@ h1 {
     color: #ad33ff;
     font-size: 4rem;
 
-    @media (max-width: 767px) and (orientation: landscape) {
+    @media (max-width: 769px) {
         font-size: 2.8rem;
     }
 
     @media (max-width: 480px) {
         font-size: 2.7rem;
+    }
+
+    span {
+        font-size: 3.5rem;
     }
 }
 
@@ -66,7 +69,7 @@ h2 {
     font-size: 3rem;
     display: inline-block;
 
-    @media (max-width: 767px) and (orientation: landscape) {
+    @media (max-width: 769px) {
         font-size: 2.2rem;
         margin: 0;
     }
@@ -99,7 +102,7 @@ i {
     color: #ad33ff;
     font-size: 3rem;
 
-    @media (max-width: 767px) and (orientation: landscape) {
+    @media (max-width: 769px) {
         font-size: 2.2rem;
     }
 }
@@ -140,7 +143,6 @@ button {
 // GAME BODY STYLES ------------------------------------- //
 
 .gameContainer {
-    // max-height: 95vh;
     width: 800px;
     padding: 20px 20px;
     margin: 0 auto;
@@ -154,6 +156,7 @@ button {
     @media (max-width: 480px) {
         padding: 5px 5px 0;
     }
+
 }
 
 .gameGrid {
@@ -164,31 +167,29 @@ button {
     align-content: space-between;
     position: relative;
 
-    border: 2px dotted deeppink;
-
-    @media (max-width: 767px) {
-
-    }
-
     @media (max-width: 480px) {
-        // margin: 10px 0;
-        // height: 70vh;
+        justify-content: center;
     }
 }
 
 .box {
     background: #000;
     width: calc(25% - 20px);
-    margin-bottom: 20px;
-
-    @media (max-width: 767px) {
-    }
 
     @media (max-width: 480px) {
-        width: calc(50% - 15px);
-        // width: auto;
-        // height: calc(25% - 20px);
+        width: calc(40% - 15px);
+        margin: 10px;
+    }
+}
 
+.box0,
+.box1,
+.box2,
+.box3 {
+    margin-bottom: 20px;
+
+    @media (max-width: 480px) {
+        margin-bottom: 10px;
     }
 }
 
@@ -212,7 +213,7 @@ img {
     padding: 10px;
 
     @media (max-width: 480px) {
-        width: 80%;
+        width: 100%;
     }
 }
 
@@ -233,8 +234,8 @@ img {
     height: 100%;
     z-index: 2;
 
-    @media (max-width: 767px) {
-        padding: 10px;
+    @media (max-width: 769px) {
+        padding: 10px 0 0;
     }
 
     @media (max-width: 480px) {
@@ -251,11 +252,9 @@ img {
             margin-top: 8px;
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 769px) {
             margin: 0;
             width: 100%;
-            font-size: 1.6rem;
-            line-height: 1.5;
             margin: 10px auto;
         }
     }
@@ -273,15 +272,13 @@ p.credits {
 
 .highScoreContainer {
     height: 30px;
-    border: 1px solid deepskyblue;
 
     p {
         margin: 0 0 5px 0;
 
-        // @media (max-width: 767px) {
-        //     margin-top: 5px;
-        //     font-size: 1.6rem;
-        //     line-height: 1.2;
-        // }
+        @media (max-width: 769px) {
+            margin-top: 5px;
+            font-size: 1.8rem;
+        }
     }
 }
