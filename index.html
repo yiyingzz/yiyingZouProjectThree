@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Yiying Yells</title>
-    <link href="https://fonts.googleapis.com/css?family=Quantico:700|Rubik&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Quantico:700|Rubik&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/31c9dfb07b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -14,7 +14,7 @@
     <div class="gameContainer">
         <header>
             <h1>Yiying Yells <span>(Gently)</span></h1>
-            <h2>A Simon Says Game <i class="fas fa-info-circle" aria-label="Toggle instructions."></i></h2>
+            <h2>A Simon Says Game <i class="fas fa-info-circle displayNone" aria-label="Toggle instructions."></i></h2>
         </header>
 
         <main>
@@ -32,10 +32,10 @@
                     <div class="overlayMessageContainer displayNone">
                         <div class="overlayMessageBg">
                             <p class="overlayMessage">
-
+                                <!-- messages to user goes here -->
                             </p>
+                            <button class="actionButton displayNone">Continue</button>
                         </div>
-                        <!-- messages to user goes here -->
                     </div>
                 </div>
             </div>
@@ -45,6 +45,10 @@
                 <p>When it's your turn, click the squares in the same order.</p>
                 <p>If you get it right, you'll go on to the next round and one more square will be added to the sequence.</p>
                 <p>If you get it wrong, you'll get one more try. Good luck!</p>
+                
+                <div class="startButtonContainer">
+                    <button class="startButton">Start</button>
+                </div>
                 <p class="credits">Made by <a href="https://yiying.ca">Yiying Zou</a></p>
             </div>
             
@@ -53,10 +57,7 @@
                     <!-- longest streak goes here -->
                 </p>
             </div>
-            
-            <button class="actionButton displayNone">Continue</button>
-            <button class="startButton">Start</button>
-        
+
         </main>
         
     </div>

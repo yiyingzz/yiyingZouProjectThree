@@ -32,7 +32,7 @@ header {
 main {
     width: 100%;
     margin: 0 auto;
-    border: 1px solid cyan;
+    // border: 1px solid cyan;
     position: relative;
 
     @media (max-width: 480px) {
@@ -42,7 +42,9 @@ main {
 
 h1,
 h2,
-h3 {
+h3,
+button {
+    font-family: 'Bungee', cursive;
     font-family: 'Quantico', sans-serif;
 }
 
@@ -108,7 +110,7 @@ a {
 button {
     padding: 10px 40px;
     font-size: inherit;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     border: 0;
     background: #ad33ff;
     color: #fff;
@@ -121,6 +123,15 @@ button {
     }
 }
 
+.actionButton {
+    margin-bottom: 0;
+}
+
+.startButtonContainer {
+    height: 44px;
+    // border: 1px dashed lime;
+}
+
 .flexContainer {
     display: flex;
     align-items: center;
@@ -131,10 +142,7 @@ button {
     display: none;
 }
 
-.buttonContainer {
-    height: 44px;
-    border: 1px dashed lime;
-}
+
 
 
 // GAME BODY STYLES ------------------------------------- //
@@ -165,7 +173,7 @@ button {
     justify-content: center;
     position: relative;
 
-    border: 2px dotted deeppink;
+    // border: 2px dotted deeppink;
 
     @media (max-width: 769px) {
         // margin: 0;
@@ -196,25 +204,25 @@ button {
     width: 65%;
     background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
     padding: 10px;
-    
 }
 
 .overlayMessageBg {
-    padding: 30px;
+    padding: 30px 30px 15px;
     background: #fff;
 }
 
 .overlayMessage {
     height: 100%;
     margin: 0;
+    padding-bottom: 15px;
 }
 
 .instructions {
-    padding: 30px 30px 0;
+    padding: 20px 30px 0;
     background: #fff;
-    height: calc(100% - 50px);
+    height: 100%;
 
-    border: 1px solid crimson;
+    // border: 1px solid crimson;
 
     @media (max-width: 480px) {
         padding: 20px 0;
@@ -243,8 +251,11 @@ p.credits {
     width: 100%;
     font-size: 1.6rem;
     text-align: center;
-    margin-top: 80px;
+    // margin-top: 30px;
     margin-bottom: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .box {
@@ -253,7 +264,7 @@ p.credits {
 
 .highScoreContainer {
     height: 30px;
-    border: 1px solid deepskyblue;
+    // border: 1px solid deepskyblue;
 
     p {
         margin: 0 0 5px 0;

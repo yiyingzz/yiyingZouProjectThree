@@ -269,7 +269,6 @@ p {
 main {
   width: 100%;
   margin: 0 auto;
-  border: 1px solid cyan;
   position: relative;
 }
 
@@ -281,7 +280,9 @@ main {
 
 h1,
 h2,
-h3 {
+h3,
+button {
+  font-family: 'Bungee', cursive;
   font-family: 'Quantico', sans-serif;
 }
 
@@ -359,7 +360,6 @@ a {
 button {
   padding: 10px 40px;
   font-size: inherit;
-  text-transform: uppercase;
   border: 0;
   background: #ad33ff;
   color: #fff;
@@ -370,6 +370,14 @@ button {
 
 button:hover, button:focus {
   background: #0099ff;
+}
+
+.actionButton {
+  margin-bottom: 0;
+}
+
+.startButtonContainer {
+  height: 44px;
 }
 
 .flexContainer {
@@ -386,11 +394,6 @@ button:hover, button:focus {
 
 .displayNone {
   display: none;
-}
-
-.buttonContainer {
-  height: 44px;
-  border: 1px dashed lime;
 }
 
 .gameContainer {
@@ -427,7 +430,6 @@ button:hover, button:focus {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  border: 2px dotted deeppink;
 }
 
 @media (max-width: 769px) {
@@ -467,20 +469,20 @@ button:hover, button:focus {
 }
 
 .overlayMessageBg {
-  padding: 30px;
+  padding: 30px 30px 15px;
   background: #fff;
 }
 
 .overlayMessage {
   height: 100%;
   margin: 0;
+  padding-bottom: 15px;
 }
 
 .instructions {
-  padding: 30px 30px 0;
+  padding: 20px 30px 0;
   background: #fff;
-  height: calc(100% - 50px);
-  border: 1px solid crimson;
+  height: 100%;
 }
 
 @media (max-width: 480px) {
@@ -513,8 +515,10 @@ p.credits {
   width: 100%;
   font-size: 1.6rem;
   text-align: center;
-  margin-top: 80px;
   margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .box {
@@ -523,7 +527,6 @@ p.credits {
 
 .highScoreContainer {
   height: 30px;
-  border: 1px solid deepskyblue;
 }
 
 .highScoreContainer p {

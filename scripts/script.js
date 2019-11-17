@@ -53,6 +53,24 @@ simonGame.highScore = 0; // maybe change this to longestStreak ><<<<<<<<<<<<<< /
 localStorage.setItem(simonGame.highScore, simonGame.highscore); 
 // ^^^^^^^^^^^^ can't use same params, must be key - 'value'
 
+// function to start game/new round
+simonGame.startNewRound = function() {
+    $('.instructions').addClass('displayNone');
+    
+    // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+    console.log("checking if localstorage is saving: ", localStorage[simonGame.highScore]);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+    simonGame.showOverlayMessage(`Watch the sequence carefully!`);
+
+    
+    setTimeout(function() {
+        $('.overlayMessageContainer').addClass('displayNone');
+        simonGame.makeSequence();
+        simonGame.playSequence();
+    }, 800)    
+}
+
 // function to create the sequence
 simonGame.makeSequence = function() {
     for (let i = 0; i < simonGame.sequenceLength; i++) {
@@ -162,11 +180,11 @@ simonGame.compareSequences = function() {
             $('.overlay').removeClass('displayNone');
 
             simonGame.showOverlayMessage(`That was the wrong sequence. Game over!`);
+            $('.actionButton').text('Play again?').removeClass('displayNone');
+            simonGame.resetGame();
             
-            setTimeout(function() {
-                simonGame.resetGame();
-                $('.actionButton').text('Play again?').removeClass('displayNone');
-            }, 800)
+            // setTimeout(function() {
+            // }, 800)
 
             simonGame.sequenceLength = 3;
             return false;
@@ -181,10 +199,12 @@ simonGame.compareSequences = function() {
     simonGame.showOverlayMessage(`Great job! You made it to the next round.`);
     simonGame.countHighScore();
 
-    setTimeout(function() {
-        simonGame.resetGame(); 
+    simonGame.resetGame(); 
         $('.actionButton').removeClass('displayNone').text('Continue');
-    }, 800)
+    // setTimeout(function() {
+    //     simonGame.resetGame(); 
+    //     $('.actionButton').removeClass('displayNone').text('Continue');
+    // }, 800)
 } 
 
 // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
@@ -212,48 +232,17 @@ simonGame.resetGame = function() {
 
 // click 'start' button
 $('.startButton').on('click', function() {
-
-    $('.instructions').addClass('displayNone');
-    
-    // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-    console.log("checking if localstorage is saving: ", localStorage[simonGame.highScore]);
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
-    simonGame.showOverlayMessage(`Watch the sequence carefully!`);
-    
-    // make button disappear
     $(this).addClass('displayNone');
-    
-    setTimeout(function() {
-        $('.overlayMessageContainer').addClass('displayNone');
-        simonGame.makeSequence();
-        simonGame.playSequence();
-    }, 800)
+    $('i').removeClass('displayNone');
+    simonGame.startNewRound();
 });
 
-
-// click 'start' button
+// 'continue' & 'play again' buttons
 $('.actionButton').on('click', function() {
-
-    $('.instructions').addClass('displayNone');
-    
-    // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-    console.log("checking if localstorage is saving: ", localStorage[simonGame.highScore]);
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
-    simonGame.showOverlayMessage(`Watch the sequence carefully!`);
-    
     // make button disappear
     $(this).addClass('displayNone');
-    
-    setTimeout(function() {
-        $('.overlayMessageContainer').addClass('displayNone');
-        simonGame.makeSequence();
-        simonGame.playSequence();
-    }, 800)
+    simonGame.startNewRound();
 });
-
-
 
 
 // this is where user clicks
