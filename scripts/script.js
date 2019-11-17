@@ -165,10 +165,10 @@ simonGame.compareSequences = function() {
             
             setTimeout(function() {
                 simonGame.resetGame();
+                $('.actionButton').text('Play again?').removeClass('displayNone');
             }, 800)
 
             simonGame.sequenceLength = 3;
-            $('button').text('Play again?').removeClass('displayNone');
             return false;
         }
     } // end of for loop
@@ -183,7 +183,7 @@ simonGame.compareSequences = function() {
 
     setTimeout(function() {
         simonGame.resetGame(); 
-        $('button').removeClass('displayNone').text('Continue');
+        $('.actionButton').removeClass('displayNone').text('Continue');
     }, 800)
 } 
 
@@ -211,7 +211,7 @@ simonGame.resetGame = function() {
 }
 
 // click 'start' button
-$('button').on('click', function() {
+$('.startButton').on('click', function() {
 
     $('.instructions').addClass('displayNone');
     
@@ -230,6 +230,31 @@ $('button').on('click', function() {
         simonGame.playSequence();
     }, 800)
 });
+
+
+// click 'start' button
+$('.actionButton').on('click', function() {
+
+    $('.instructions').addClass('displayNone');
+    
+    // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+    console.log("checking if localstorage is saving: ", localStorage[simonGame.highScore]);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+    simonGame.showOverlayMessage(`Watch the sequence carefully!`);
+    
+    // make button disappear
+    $(this).addClass('displayNone');
+    
+    setTimeout(function() {
+        $('.overlayMessageContainer').addClass('displayNone');
+        simonGame.makeSequence();
+        simonGame.playSequence();
+    }, 800)
+});
+
+
+
 
 // this is where user clicks
 // event to grab clicks and put on userSequence array

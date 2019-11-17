@@ -269,6 +269,8 @@ p {
 main {
   width: 100%;
   margin: 0 auto;
+  border: 1px solid cyan;
+  position: relative;
 }
 
 @media (max-width: 480px) {
@@ -388,12 +390,13 @@ button:hover, button:focus {
 
 .buttonContainer {
   height: 44px;
+  border: 1px dashed lime;
 }
 
 .gameContainer {
   max-height: 95vh;
   width: 800px;
-  padding: 20px 20px 0;
+  padding: 20px 20px;
   margin: 0 auto;
   background: #fff;
 }
@@ -424,6 +427,7 @@ button:hover, button:focus {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  border: 2px dotted deeppink;
 }
 
 @media (max-width: 769px) {
@@ -462,15 +466,21 @@ button:hover, button:focus {
   padding: 10px;
 }
 
-.overlayMessage {
-  background: #fff;
+.overlayMessageBg {
   padding: 30px;
+  background: #fff;
+}
+
+.overlayMessage {
+  height: 100%;
   margin: 0;
 }
 
 .instructions {
-  padding: 30px 0;
+  padding: 30px 30px 0;
   background: #fff;
+  height: calc(100% - 50px);
+  border: 1px solid crimson;
 }
 
 @media (max-width: 480px) {
@@ -499,12 +509,21 @@ button:hover, button:focus {
   }
 }
 
+p.credits {
+  width: 100%;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 0;
+}
+
 .box {
   background: #000;
 }
 
 .highScoreContainer {
   height: 30px;
+  border: 1px solid deepskyblue;
 }
 
 .highScoreContainer p {
@@ -516,17 +535,6 @@ button:hover, button:focus {
     margin-top: 5px;
     font-size: 1.6rem;
     line-height: 1.2;
-  }
-}
-
-footer p {
-  font-size: 1.6rem;
-  margin-bottom: 3px;
-}
-
-@media (max-width: 480px) {
-  footer p {
-    margin-top: 5px;
   }
 }
 

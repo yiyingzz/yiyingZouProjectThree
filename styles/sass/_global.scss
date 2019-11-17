@@ -32,6 +32,8 @@ header {
 main {
     width: 100%;
     margin: 0 auto;
+    border: 1px solid cyan;
+    position: relative;
 
     @media (max-width: 480px) {
         width: 95%;
@@ -131,7 +133,7 @@ button {
 
 .buttonContainer {
     height: 44px;
-    // border: 1px dashed lime;
+    border: 1px dashed lime;
 }
 
 
@@ -140,7 +142,7 @@ button {
 .gameContainer {
     max-height: 95vh;
     width: 800px;
-    padding: 20px 20px 0;
+    padding: 20px 20px;
     margin: 0 auto;
     background: #fff;
 
@@ -163,7 +165,7 @@ button {
     justify-content: center;
     position: relative;
 
-    // border: 1px solid crimson;
+    border: 2px dotted deeppink;
 
     @media (max-width: 769px) {
         // margin: 0;
@@ -197,15 +199,22 @@ button {
     
 }
 
-.overlayMessage {
-    background: #fff;
+.overlayMessageBg {
     padding: 30px;
+    background: #fff;
+}
+
+.overlayMessage {
+    height: 100%;
     margin: 0;
 }
 
 .instructions {
-    padding: 30px 0;
+    padding: 30px 30px 0;
     background: #fff;
+    height: calc(100% - 50px);
+
+    border: 1px solid crimson;
 
     @media (max-width: 480px) {
         padding: 20px 0;
@@ -230,13 +239,21 @@ button {
     }
 }
 
+p.credits {
+    width: 100%;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 0;
+}
+
 .box {
     background: #000;
 }
 
 .highScoreContainer {
     height: 30px;
-    // border: 1px solid deepskyblue;
+    border: 1px solid deepskyblue;
 
     p {
         margin: 0 0 5px 0;
@@ -251,14 +268,6 @@ button {
 
 
 // FOOTER STYLES ---------------------------------------//
-footer p {
-    font-size: 1.6rem;
-    margin-bottom: 3px;
-
-    @media (max-width: 480px) {
-        margin-top: 5px;
-    }
-}
 
 
 // TESTING border-radius-------
