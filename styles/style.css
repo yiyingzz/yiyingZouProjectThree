@@ -358,7 +358,8 @@ a {
   color: inherit;
 }
 
-button {
+.startButton,
+.continueButton {
   padding: 10px 40px;
   font-size: inherit;
   border: 0;
@@ -369,7 +370,9 @@ button {
   transition: 0.3s all;
 }
 
-button:hover, button:focus {
+.startButton:hover, .startButton:focus,
+.continueButton:hover,
+.continueButton:focus {
   background: #0099ff;
 }
 
@@ -450,6 +453,9 @@ button:hover, button:focus {
 }
 
 .box {
+  width: 150px;
+  height: 150px;
+  border: 0;
   background: #000;
 }
 
@@ -539,19 +545,17 @@ p.credits {
   }
 }
 
-.coloredBox0,
-.clickEnabledBox0:active {
+.coloredBox0 {
   background: #ff3dff;
 }
 
 .clickEnabledBox0:hover,
 .clickEnabledBox0:focus {
-  border: 10px solid #ff00ff;
+  border: 10px solid #ff3dff;
   cursor: pointer;
 }
 
-.coloredBox1,
-.clickEnabledBox1:active {
+.coloredBox1 {
   background: #ff3939;
 }
 
@@ -561,8 +565,7 @@ p.credits {
   cursor: pointer;
 }
 
-.coloredBox2,
-.clickEnabledBox2:active {
+.coloredBox2 {
   background: #ff771b;
 }
 
@@ -572,8 +575,7 @@ p.credits {
   cursor: pointer;
 }
 
-.coloredBox3,
-.clickEnabledBox3:active {
+.coloredBox3 {
   background: #ffee00;
 }
 
@@ -583,8 +585,7 @@ p.credits {
   cursor: pointer;
 }
 
-.coloredBox4,
-.clickEnabledBox4:active {
+.coloredBox4 {
   background: #00ff00;
 }
 
@@ -594,8 +595,7 @@ p.credits {
   cursor: pointer;
 }
 
-.coloredBox5,
-.clickEnabledBox5:active {
+.coloredBox5 {
   background: #0099ff;
 }
 
@@ -605,8 +605,7 @@ p.credits {
   cursor: pointer;
 }
 
-.coloredBox6,
-.clickEnabledBox6:active {
+.coloredBox6 {
   background: #4a3dff;
 }
 
@@ -616,8 +615,7 @@ p.credits {
   cursor: pointer;
 }
 
-.coloredBox7,
-.clickEnabledBox7:active {
+.coloredBox7 {
   background: #ad33ff;
 }
 

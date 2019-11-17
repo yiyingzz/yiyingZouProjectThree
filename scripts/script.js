@@ -4,7 +4,7 @@ simonGame.boxes = [
     {
         box: '.box0',
         color: 'coloredBox0', 
-        clickColor: 'clickEnabledBox0'   
+        clickColor: 'clickEnabledBox0',  
     },
     {
         box: '.box1',
@@ -76,6 +76,7 @@ simonGame.playSequence = function() {
     simonGame.sequence.forEach(function(item, i) {
         const boxNum = simonGame.boxes[item].box;
         const boxColor = simonGame.boxes[item].color;
+        console.log(boxNum, boxColor);
         
         // boxes 'light up'
         setTimeout(function() {            
@@ -122,6 +123,10 @@ simonGame.hideOverlayMessage = function() {
 
 // function to compare user array to sequence array
 simonGame.compareSequences = function() {
+
+    console.log('sequence:', simonGame.sequence);
+    console.log('userSequence:', simonGame.userSequence);
+
     simonGame.removeClickColors();
     simonGame.chances--; // user used up a chance
     
@@ -181,27 +186,33 @@ simonGame.resetGame = function() {
 simonGame.init = function() {
     // EVENT HANDLERS -----------------------------------------//
     // click 'start' button
-    $('.startButton').on('click keypress', function() {
+    $('.startButton').on('click', function() {
         $(this).addClass('displayNone');
         $('i').removeClass('displayNone');
         simonGame.startNewRound();
     });
     
     // 'continue' & 'play again' buttons
-    $('.continueButton').on('click keypress', function() {
+    $('.continueButton').on('click', function() {
         $(this).addClass('displayNone');
         simonGame.startNewRound();
     });
     
     // this is where user clicks
     // event to grab clicks and put on userSequence array
-    $('.gameGrid').on('click keypress', '.clickEnabled', function() {
-        console.log("logging user clicks", $(this));
+    $('.gameGrid').on('click', '.clickEnabled', function() {
     
         // grab the box number using regex
         const classNames = $(this).attr('class');
         boxNumber = classNames.match(/[0-9]/);
         simonGame.userSequence.push(parseInt(boxNumber[0]));
+        console.log("boxNum", boxNumber, boxNumber[0]);
+
+        $(this).addClass(`${simonGame.boxes[boxNumber[0]].color}`);
+        setTimeout(() => {
+            $(this).removeClass(`${simonGame.boxes[boxNumber[0]].color}`);
+            console.log($(this));
+        }, 300); // this changes box colours on click
     
         simonGame.userClicks++;
         if (simonGame.userClicks >= simonGame.sequenceLength ) {
