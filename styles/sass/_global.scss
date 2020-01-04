@@ -1,311 +1,319 @@
 // GLOBAL STYLES ------------------------------------------//
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    min-height: 100vh;
-    font-family: 'Rubik', sans-serif;
-    font-size: 2rem;
-    color: #000;
-    margin: 0;
-    text-align: center;
-    background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
+  min-height: 100vh;
+  font-family: "Rubik", sans-serif;
+  font-size: 2rem;
+  color: #000;
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(
+    to bottom right,
+    palevioletred,
+    palegoldenrod,
+    skyblue
+  );
 
-    @media (max-width: 480px) {
-        font-size: calc(1.8rem + 0.5vw);
-    }
+  @media (max-width: 480px) {
+    font-size: calc(1.8rem + 0.5vw);
+  }
 
-    @media (max-width: 320px) {
-        font-size: 1.8rem;
-    }
+  @media (max-width: 320px) {
+    font-size: 1.8rem;
+  }
 }
 
 p {
-    line-height: 1.3;
+  line-height: 1.3;
 }
 
 main {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
 
-    @media (max-width: 480px) {
-        width: 95%;
-    }
+  @media (max-width: 480px) {
+    width: 95%;
+  }
 }
 
 h1,
 h2,
 h3,
 button {
-    font-family: 'Quantico', sans-serif;
+  font-family: "Quantico", sans-serif;
 }
 
 h1,
 h3 {
-    margin: 0;
+  margin: 0;
 }
 
 h1 {
-    color: #ad33ff;
-    font-size: 4rem;
+  color: #ad33ff;
+  font-size: 4rem;
+
+  @media (max-width: 769px) {
+    font-size: 2.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.7rem;
+  }
+
+  span {
+    font-size: 3.5rem;
 
     @media (max-width: 769px) {
-        font-size: 2.8rem;
+      font-size: 2.4rem;
     }
-
-    @media (max-width: 480px) {
-        font-size: 2.7rem;
-    }
-
-    span {
-        font-size: 3.5rem;
-
-        @media (max-width: 769px) {
-            font-size: 2.4rem;
-        }
-    }
+  }
 }
 
 h2 {
-    margin: 5px 0;
-    font-size: 3rem;
-    display: inline-block;
+  margin: 5px 0;
+  font-size: 3rem;
+  display: inline-block;
 
-    @media (max-width: 769px) {
-        font-size: 2.2rem;
-        margin: 0;
-    }
+  @media (max-width: 769px) {
+    font-size: 2.2rem;
+    margin: 0;
+  }
 
-    @media (max-width: 480px) {
-        font-size: 2.4rem;
-    }
+  @media (max-width: 480px) {
+    font-size: 2.4rem;
+  }
 }
 
 h3 {
-    font-size: 2.4rem;
+  font-size: 2.4rem;
 
-    @media (max-width: 767px) and (orientation: landscape) {
-        font-size: 2rem;
-    }
+  @media (max-width: 767px) and (orientation: landscape) {
+    font-size: 2rem;
+  }
 }
 
 i,
 a {
-    cursor: pointer;
-    transition: 0.3s all;
+  cursor: pointer;
+  transition: 0.3s all;
 
-    &:hover,
-    &:focus {
-        color: #0099ff;
-    }
+  &:hover,
+  &:focus {
+    color: #0099ff;
+  }
 }
 
 i {
-    color: #ad33ff;
-    font-size: 3rem;
+  color: #ad33ff;
+  font-size: 3rem;
 
-    @media (max-width: 769px) {
-        font-size: 2.2rem;
-    }
+  @media (max-width: 769px) {
+    font-size: 2.2rem;
+  }
 }
 
 a {
-    color: inherit;
+  color: inherit;
 }
 
 button {
-    padding: 10px 40px;
-    font-size: inherit;
-    border: 0;
-    background: #ad33ff;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s all;
-    
-    &:hover,
-    &:focus {
-        background: #0099ff;
-    }
+  padding: 10px 40px;
+  font-size: inherit;
+  border: 0;
+  background: #ad33ff;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s all;
+
+  &:hover,
+  &:focus {
+    background: #0099ff;
+  }
 }
 
 .flexContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .displayNone {
-    display: none;
+  display: none;
 }
 
 // GAME BODY STYLES ------------------------------------- //
 
 .gameContainer {
-    width: 1000px;
-    padding: 30px 30px;
-    margin: 0 auto;
-    background: #fff;
+  width: 1000px;
+  padding: 30px 30px;
+  margin: 0 auto;
+  background: #fff;
 
-    @media (max-width: 1200px) {
-        padding: 20px 20px;
-        width: 800px;
-    }
+  @media (max-width: 1200px) {
+    padding: 20px 20px;
+    width: 800px;
+  }
 
-    @media (max-width: 769px) {
-        width: 90%;
-        padding: 10px 10px 0;
-    }
+  @media (max-width: 769px) {
+    width: 90%;
+    padding: 10px 10px 0;
+  }
 
-    @media (max-width: 480px) {
-        padding: 5px 5px 0;
-    }
-
+  @media (max-width: 480px) {
+    padding: 5px 5px 0;
+  }
 }
 
 .gameGrid {
-    margin: 20px auto 0;
-    padding: 20px;
-    width: 90%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-between;
-    position: relative;
+  margin: 20px auto 0;
+  padding: 20px;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  position: relative;
 
-    @media (max-width: 480px) {
-        padding: 0;
-        justify-content: center;
-    }
+  @media (max-width: 480px) {
+    padding: 0;
+    justify-content: center;
+  }
 }
 
 .box {
-    background: #000;
-    width: calc(25% - 105px / 4);
+  background: #000;
+  width: calc(25% - 105px / 4);
 
-    @media (max-width: 1200px) {
-        width: calc(25% - 60px / 4);
-    }
+  @media (max-width: 1200px) {
+    width: calc(25% - 60px / 4);
+  }
 
-    @media (max-width: 480px) {
-        width: calc(40% - 15px);
-        margin: 10px;
-    }
+  @media (max-width: 480px) {
+    width: calc(40% - 15px);
+    margin: 10px;
+  }
 }
 
 .box0,
 .box1,
 .box2,
 .box3 {
-    margin-bottom: 35px;
+  margin-bottom: 35px;
 
-    @media (max-width: 1200px) {
-        margin-bottom: 20px;
-    }
+  @media (max-width: 1200px) {
+    margin-bottom: 20px;
+  }
 
-    @media (max-width: 480px) {
-        margin-bottom: 10px;
-    }
+  @media (max-width: 480px) {
+    margin-bottom: 10px;
+  }
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
 .continueButton {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .startButton {
-    margin-top: 30px;
+  margin-top: 30px;
 
-    @media (max-width: 789px) {
-        margin-top: 0;
-    }
+  @media (max-width: 789px) {
+    margin-top: 0;
+  }
 }
 
 // GAME INSTRUCTIONS & TEXT STYLES -----------------------------------//
 .overlay,
 .instructions {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .overlayMessageContainer {
-    width: 65%;
-    background: linear-gradient(to bottom right, palevioletred, palegoldenrod, skyblue);
-    padding: 10px;
+  width: 65%;
+  background: linear-gradient(
+    to bottom right,
+    palevioletred,
+    palegoldenrod,
+    skyblue
+  );
+  padding: 10px;
 
-    @media (max-width: 480px) {
-        width: 100%;
-    }
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 }
 
 .overlayMessageBg {
-    padding: 30px 30px 15px;
-    background: #fff;
+  padding: 30px 30px 15px;
+  background: #fff;
 }
 
 .overlayMessage {
-    height: 100%;
-    margin: 0;
-    padding-bottom: 15px;
+  height: 100%;
+  margin: 0;
+  padding-bottom: 15px;
 }
 
 .instructions {
-    padding: 20px 30px 0;
-    background: #fff;
-    height: 100%;
-    z-index: 2;
+  padding: 20px 30px 0;
+  background: #fff;
+  height: 100%;
+  z-index: 2;
+
+  @media (max-width: 769px) {
+    padding: 10px 0 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 0;
+  }
+
+  p {
+    width: 75%;
+    margin: 20px auto;
+    z-index: 1;
+
+    &:first-of-type {
+      margin-top: 8px;
+    }
 
     @media (max-width: 769px) {
-        padding: 10px 0 0;
+      margin: 0;
+      width: 100%;
+      margin: 10px auto;
     }
-
-    @media (max-width: 480px) {
-        padding: 20px 0;
-    }
-    
-    p {
-        width: 75%;
-        margin: 20px auto;
-        text-align: left;
-        z-index: 1;
-
-        &:first-of-type {
-            margin-top: 8px;
-        }
-
-        @media (max-width: 769px) {
-            margin: 0;
-            width: 100%;
-            margin: 10px auto;
-        }
-    }
+  }
 }
 
 p.credits {
-    width: 100%;
-    font-size: 1.6rem;
-    text-align: center;
-    margin-bottom: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  width: 100%;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .highScoreContainer {
-    height: 30px;
+  height: 30px;
 
-    p {
-        margin: 0 0 5px 0;
+  p {
+    margin: 0 0 5px 0;
 
-        @media (max-width: 769px) {
-            margin-top: 5px;
-            font-size: 1.8rem;
-        }
+    @media (max-width: 769px) {
+      margin-top: 5px;
+      font-size: 1.8rem;
     }
+  }
 }

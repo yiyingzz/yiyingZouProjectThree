@@ -241,7 +241,7 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 2rem;
   color: #000;
   margin: 0;
@@ -282,7 +282,7 @@ h1,
 h2,
 h3,
 button {
-  font-family: 'Quantico', sans-serif;
+  font-family: "Quantico", sans-serif;
 }
 
 h1,
@@ -571,7 +571,6 @@ img {
 .instructions p {
   width: 75%;
   margin: 20px auto;
-  text-align: left;
   z-index: 1;
 }
 
